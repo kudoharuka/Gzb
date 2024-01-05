@@ -1,0 +1,90 @@
+<template>
+  <div>
+    <!--    面包屑-->
+    <Breadcrumb class="round15 pd whiteback mg" :title="title"></Breadcrumb>
+    <!--    内容查询-->
+    <el-card class="round15 mg">
+      <div style="font-size: 20px;font-weight: bold;"> 内容查询</div>
+      <el-row :gutter="20">
+        <el-col :span="8">
+          <el-input placeholder="请输入内容">
+            <el-button slot="append" icon="el-icon-search" @click="getUserList"></el-button>
+          </el-input>
+        </el-col>
+        <el-col :span="5">
+          <el-button
+              v-for="type in types"
+              :key="type.name"
+              size="small"
+          >
+            {{ type.name }}
+          </el-button>
+        </el-col>
+        <el-col :span=2>
+          <el-button type="primary" round><i class="el-icon-plus"></i> 添加内容</el-button>
+        </el-col>
+      </el-row>
+    </el-card>
+    <!--    内容列表-->
+    <el-card class="round15 mg">
+      <div style="font-size: 20px;font-weight: bold"> 内容列表</div>
+      <Table :table-data="contentList" :columns="columns" :show-state="true">
+        <!--        状态区-->
+        <template #state="scope">
+          <el-tag v-if="scope.row.state === '0'" type="warning">未审核</el-tag>
+          <el-tag v-else type="success">已审核</el-tag>
+        </template>
+        <!--        操作区-->
+        <template #operation="scope">
+          <el-button size="mini" type="success" icon="el-icon-view" round
+                     @click="handleEdit(scope.$index, scope.row)">详情
+          </el-button>
+          <el-button size="mini" type="warning" icon="el-icon-finished" round
+                     @click="handleEdit(scope.$index, scope.row)"
+                     :disabled="scope.row.state=== '1'">审核
+          </el-button>
+          <el-button size="mini" type="primary" icon="el-icon-edit" round
+                     @click="handleEdit(scope.$index, scope.row)">编辑
+          </el-button>
+          <el-button size="mini" type="danger" icon="el-icon-delete" round
+                     @click="handleDelete(scope.$index, scope.row)">删除
+          </el-button>
+        </template>
+      </Table>
+    </el-card>
+  </div>
+</template>
+
+<script>
+
+
+export default {
+  name: "content",
+
+
+  data() {
+    return {
+      title: '内容管理',
+      contentList: [
+        {author: 'wxy', publishTime: '2022', part: '测试1', summary: '这是内容1', state: '1'},
+        {author: 'wxy', publishTime: '2022', part: '测试2', summary: '这是内容2', state: '0'},
+      ],
+      columns: [
+        {prop: 'author', label: '用户名', width: '150px'},
+        {prop: 'publishTime', label: '发布时间', width: '180px', sortable: true},
+        {prop: 'part', label: '板块', width: '180px', sortable: true},
+        {prop: 'summary', label: '内容', width: '180px'},
+      ],
+    }
+  },
+  methods: {
+    handleEdit(index, row) {
+      console.log(index, row);
+    },
+  }
+}
+</script>
+
+<style scoped>
+
+</style>
