@@ -3,7 +3,7 @@
 		<view v-for = "m in mes1">
 			<view class="viewSaid" @click="goPost(m.ID)">
 				<view class="viewUser">
-					<image class="headPortrait" src="@/static/academy-icons/photo.jpg"></image>
+					<image class="headPortrait" src="@/static/company-icons/photo.jpg"></image>
 					<view class="userMes">
 						<text class="userName">{{m.Author}}</text>
 					</view>
@@ -15,10 +15,10 @@
 				</view>
 			</view>
 		</view>
-			
+
 <!-- 			<view class="viewSaid">
 				<view class="viewUser">
-					<image class="headPortrait" src="@/static/academy-icons/photo.jpg"></image>
+					<image class="headPortrait" src="@/static/company-icons/photo.jpg"></image>
 					<view class="userMes">
 						<text class="userName">玲玲学姐</text>
 					</view>
@@ -26,7 +26,7 @@
 				<view class="saidContent">
 
 					<view class="textContent">{{this.content}}</view>
-					<image class="sights" src="@/static/academy-icons/sight.png"></image>
+					<image class="sights" src="@/static/company-icons/sight.png"></image>
 
 				</view>
 			</view> -->
@@ -53,15 +53,15 @@
 		onShow() {
 			// console.log('eee')
 		},
-		created() {	
+		created() {
 			var _this = this;
 			const on = uni.$on('code1', function(data) {
 				_this.mes1 = data.saidMes;
 				console.log("said内部的Mes是：");
 				console.log(_this.mes1)
-				
+
 				// uni.$u.http.get('/v1/frontend/recipe/list/1', {
-					
+
 				// }).then(res => {
 				// 	this.mes = res.data.data;
 				// 	console.log("成功")
@@ -70,11 +70,11 @@
 				// 	console.log("失败")
 				// })
 			})
-			
+
 		},
 		mounted() {
 			// uni.$u.http.get('/v1/frontend/recipe/list/1', {
-				
+
 			// }).then(res => {
 			// 	this.mes = res.data;
 			// 	console.log("成功")
@@ -94,23 +94,23 @@
 }
 .viewSaid {
 	height: auto;
-	  
+
 	/* 圆角 */
 	border-radius: 18rpx;
-	
+
 	/* 边 */
 	border: 1rpx solid #E0E3DA;
 	/* 阴影 */
 	box-shadow:2rpx 7rpx 0rpx #ebebeb;
-	
+
 	background-color: #ffffff;
 	margin-left:30rpx;
 	margin-right:30rpx;
 	margin-top: 25rpx;
-	
+
 	/* padding使得文字和图片不至于贴着边框 */
 	padding: 25rpx;
-	
+
 }
 .headPortrait{
 	height: 110rpx;

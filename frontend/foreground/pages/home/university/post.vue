@@ -3,7 +3,7 @@
 		<view v-for="m in mes">
 			<view class="title">{{m.Title}}</view>
 			<view class="user">
-				<image class="headPortrait" src="@/static/academy-icons/photo.jpg"></image>
+				<image class="headPortrait" src="@/static/company-icons/photo.jpg"></image>
 				<view class="mes">
 					<view class="name">{{m.Author}}</view>
 					<view class="time">{{m.PublishTime}}</view>
@@ -22,10 +22,10 @@
 			return {
 				id: 0,
 				title: "从跨岗位到2021清华建筑学硕状元，初试402分，快题理论双130+，我是怎样...",
-				avatarUrl: "@/static/academy-icons/photo.jpg",
+				avatarUrl: "@/static/company-icons/photo.jpg",
 				author: "咸鱼学长",
 				publishTime: "2023-06-01",
-				pageUrl: "@/static/academy-icons/sight.png",
+				pageUrl: "@/static/company-icons/sight.png",
 				content: "写下这封长信只因为我知道作为一个跨考者，孤独是很难避免的，这种感觉真实，但它没什么坏处——无处也无需回避。如果你恰是一名“三跨”（跨岗位、跨学校、跨地区）考生，那么基本不会有概率遇到同行者，考研之路必然会要你去独自走完,这其实是件挺酷的事。",
 				mes: [],
 			}

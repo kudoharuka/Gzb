@@ -1,4 +1,4 @@
-package academy
+package company
 
 import (
 	fybDatabase "FybBackend/database"
@@ -7,13 +7,13 @@ import (
 	"net/http"
 )
 
-func SelectAcademyByCode(e *gin.Engine) {
+func SelectCompanyByCode(e *gin.Engine) {
 	db := fybDatabase.InitDB()
-	e.GET("/v1/frontend/academy/detail/:code", func(context *gin.Context) {
+	e.GET("/v1/frontend/company/detail/:code", func(context *gin.Context) {
 		var result *multierror.Error
 		code := context.Param("code")
 
-		err, responseBody, count := fybDatabase.SearchAcademyByCode(db, code)
+		err, responseBody, count := fybDatabase.SearchCompanyByCode(db, code)
 		result = multierror.Append(result, err)
 		if count > 0 && result.ErrorOrNil() == nil {
 			context.JSON(http.StatusOK, gin.H{

@@ -1,4 +1,4 @@
-package academy
+package company
 
 import (
 	fybDatabase "FybBackend/database"
@@ -10,7 +10,7 @@ import (
 
 func SelectScoreByTypeFirstSecondLevel(e *gin.Engine) {
 	db := fybDatabase.InitDB()
-	e.POST("/v1/frontend/academy/score", func(context *gin.Context) {
+	e.POST("/v1/frontend/company/score", func(context *gin.Context) {
 		var result *multierror.Error
 		data, err := context.GetRawData()
 		if err != nil {

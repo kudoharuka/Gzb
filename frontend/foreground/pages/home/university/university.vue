@@ -1,17 +1,17 @@
 <template>
 	<view>
-		<view class="academyMes">
-			<image class="academyLogo" :src="mes.Logo"></image>
+		<view class="companyMes">
+			<image class="companyLogo" :src="mes.Logo"></image>
 			<view class="viewText">
-				<text class="academyName">{{mes.Name}}</text>
-				<view class="academyType">
+				<text class="companyName">{{mes.Name}}</text>
+				<view class="companyType">
 					<view class="typeOfScoreLine">{{mes.LineType}}</view>
 					<text class="typeOfInstitution">{{mes.Level}}</text>
 				</view>
-				<text class="academyCode">{{mes.Region}}|院校代码：{{mes.Code}}</text>
+				<text class="companyCode">{{mes.Region}}|院校代码：{{mes.Code}}</text>
 			</view>
 		</view>
-		<view class="academyBar">
+		<view class="companyBar">
 			<view class="barItem" @click="show(1)" :class="index===1? 'active':''">院校简介</view>
 			<view class="barItem" @click="show(2)" :class="index===2? 'active':''">招生简章</view>
 			<view class="barItem" @click="show(3)" :class="index===3? 'active':''">考研分数线</view>
@@ -63,15 +63,15 @@
 		onLoad:function(option){
 			var _this = this
 			this.code = option.code;
-			uni.$u.http.get('/v1/frontend/academy/detail/' + this.code, {
-			
+			uni.$u.http.get('/v1/frontend/company/detail/' + this.code, {
+
 			}).then(res => {
 				_this.mes = res.data.data[0];
 				console.log('MMMMM');
 			    console.log(_this.mes);
 				console.log('MMMMM');
 			}).catch(err => {
-			
+
 			})
 			// uni.$on('code1',function(data) {
 			// 	_this.guide = data.guide;
@@ -118,13 +118,13 @@
 				}
 				this.$route.meta.index = 0
 		    }
-			
+
 		}
 	}
 </script>
 
 <style>
-	.academyMes{
+	.companyMes{
 		display: flex;
 		flex-direction: row;
 		justify-content: center;
@@ -136,16 +136,16 @@
 		display: flex;
 		flex-direction: column;
 	}
-	.academyLogo{
+	.companyLogo{
 		margin-right: 40rpx;
 		height: 150rpx;
 		width: 150rpx;
 	}
-	.academyName{
+	.companyName{
 		font-size: 40rpx;
 		font-family: "黑体";
 	}
-	.academyType{
+	.companyType{
 		display: flex;
 		margin-top: 5rpx;
 	}
@@ -174,11 +174,11 @@
 		color: #ffffff;
 		font-family: "黑体";
 	}
-	.academyCode{
+	.companyCode{
 		margin-top: 5rpx;
 		font-size: 30rpx;
 	}
-	.academyBar{
+	.companyBar{
 		display: flex;
 		justify-content: center;
 	}

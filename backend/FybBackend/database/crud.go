@@ -9,49 +9,49 @@ import (
 	"time"
 )
 
-// Academy
+// Company
 
-func SearchAcademyByRegionLevelType(db *gorm.DB, where map[string]interface{}) (error, []Academy, int64) {
+func SearchCompanyByRegionLevelType(db *gorm.DB, where map[string]interface{}) (error, []Company, int64) {
 	var result *multierror.Error
-	var academy []Academy
+	var company []Company
 	var count int64
-	err := db.Table("academy").Where(where).Find(&academy).Count(&count).Error
+	err := db.Table("company").Where(where).Find(&company).Count(&count).Error
 	if err != nil {
 		result = multierror.Append(result, err)
 	}
-	return result, academy, count
+	return result, company, count
 }
 
-func SearchAcademyByName(db *gorm.DB, name string) (error, []Academy, int64) {
-	var academy []Academy
+func SearchCompanyByName(db *gorm.DB, name string) (error, []Company, int64) {
+	var company []Company
 	var result error
 	name = "%" + name + "%"
-	err := db.Table("academy").Where("name like ?", name).Find(&academy).Error
+	err := db.Table("company").Where("name like ?", name).Find(&company).Error
 	if err != nil {
 		result = multierror.Append(result, err)
 	}
 	var count int64
-	err2 := db.Table("academy").Where("name like ?", name).Find(&academy).Count(&count).Error
+	err2 := db.Table("company").Where("name like ?", name).Find(&company).Count(&count).Error
 	if err2 != nil {
 		result = multierror.Append(result, err2)
 	}
-	return result, academy, count
+	return result, company, count
 }
 
-func SearchAcademyByCode(db *gorm.DB, code string) (error, []Academy, int64) {
-	var academy []Academy
+func SearchCompanyByCode(db *gorm.DB, code string) (error, []Company, int64) {
+	var company []Company
 	var result error
 	code = code + "%"
-	err := db.Table("academy").Where("code like ?", code).Find(&academy).Error
+	err := db.Table("company").Where("code like ?", code).Find(&company).Error
 	if err != nil {
 		result = multierror.Append(result, err)
 	}
 	var count int64
-	err2 := db.Table("academy").Where("code like ?", code).Find(&academy).Count(&count).Error
+	err2 := db.Table("company").Where("code like ?", code).Find(&company).Count(&count).Error
 	if err2 != nil {
 		result = multierror.Append(result, err2)
 	}
-	return result, academy, count
+	return result, company, count
 }
 
 // Job
@@ -93,19 +93,19 @@ func SearchJobByCode(db *gorm.DB, code string) (error, []Job, int64) {
 	return err2, jobs, count
 }
 
-func SearchScore(db *gorm.DB, code string) (error, Academy, int64) {
-	var academy Academy
+func SearchScore(db *gorm.DB, code string) (error, Company, int64) {
+	var company Company
 	var result error
-	err := db.Table("academy").Where("code=?", code).Find(&academy).Error
+	err := db.Table("company").Where("code=?", code).Find(&company).Error
 	if err != nil {
 		result = multierror.Append(result, err)
 	}
 	var count int64
-	err2 := db.Table("academy").Where("code=?", code).Find(&academy).Count(&count).Error
+	err2 := db.Table("company").Where("code=?", code).Find(&company).Count(&count).Error
 	if err2 != nil {
 		result = multierror.Append(result, err2)
 	}
-	return result, academy, count
+	return result, company, count
 }
 
 func SearchScoreByTypeFirstSecondLevel(db *gorm.DB, where map[string]interface{}) (error, []string) {

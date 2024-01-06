@@ -1,4 +1,4 @@
-package academy
+package company
 
 import (
 	fybDatabase "FybBackend/database"
@@ -10,7 +10,7 @@ import (
 
 func SearchByRule(e *gin.Engine) {
 	db := fybDatabase.InitDB()
-	e.POST("/v1/frontend/academy/searchByRule", func(context *gin.Context) {
+	e.POST("/v1/frontend/company/searchByRule", func(context *gin.Context) {
 		var result *multierror.Error
 		data, err := context.GetRawData()
 		if err != nil {
@@ -41,9 +41,9 @@ func SearchByRule(e *gin.Engine) {
 			delete(requestBody, "type")
 		}
 
-		var responseBody []fybDatabase.Academy
+		var responseBody []fybDatabase.Company
 		var count int64
-		err, responseBody, count = fybDatabase.SearchAcademyByRegionLevelType(db, requestBody)
+		err, responseBody, count = fybDatabase.SearchCompanyByRegionLevelType(db, requestBody)
 		if err != nil {
 			result = multierror.Append(result, err)
 		}

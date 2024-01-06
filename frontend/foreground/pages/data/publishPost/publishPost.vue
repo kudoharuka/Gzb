@@ -11,7 +11,7 @@
 				<label class="">{{array1[index1]}}</label>
 				<!-- <label class="downArrow"> ∨ </label> -->
 				<label class="down">
-					<image class="downArrow" src="@/static/academy-icons/down.png"></image>
+					<image class="downArrow" src="@/static/company-icons/down.png"></image>
 				</label>
 			</picker>
 			<view class="inputNum" v-show="isShow">
@@ -24,7 +24,7 @@
 			<button @click="test()" class="publishBtn">发布</button>
 		</view>
 	</view>
-	
+
 </template>
 
 <script>
@@ -32,9 +32,9 @@
 	Axios.defaults.baseURL = '/'
 	// eslint-disable-next-line no-unused-vars
 	const axios = require('axios')
-	
+
 	import { pathToBase64, base64ToPath } from '@/js/image-tools/index.js'
-	
+
 	 export default {
 	    data() {
 	        return {
@@ -47,7 +47,7 @@
 				index1: 0,
 				type: 0,
 				baseImageList:[],
-				img: '@/static/academy-icons/sight.png',
+				img: '@/static/company-icons/sight.png',
 				reward: 0,
 				num: 0,
 				isShow: false,
@@ -85,7 +85,7 @@
 						title: '请先输入文章标题',
 						icon: 'none',    //如果要纯文本，不要icon，将值设为'none'
 						duration: 2000    //持续时间为 2秒
-					})  
+					})
 				}
 				else if(this.title.length <= 0 || this.title.length >= 31){
 					console.log("标题的字数请控制在1-30之间");
@@ -93,7 +93,7 @@
 						title: '标题的字数请控制在1-30之间',
 						icon: 'none',    //如果要纯文本，不要icon，将值设为'none'
 						duration: 2000    //持续时间为 2秒
-					})  
+					})
 				}
 				else if(this.context == ""){
 					console.log("请输入文章内容");
@@ -101,7 +101,7 @@
 						title: '请输入文章内容',
 						icon: 'none',    //如果要纯文本，不要icon，将值设为'none'
 						duration: 2000    //持续时间为 2秒
-					})  
+					})
 				}
 				else if(this.index1 == 0){
 					console.log("请先选择文章类型");
@@ -109,7 +109,7 @@
 						title: '请先选择文章类型',
 						icon: 'none',    //如果要纯文本，不要icon，将值设为'none'
 						duration: 2000    //持续时间为 2秒
-					})  
+					})
 				}
 				else {
 					this.num = parseInt(this.num);
@@ -119,7 +119,7 @@
 							title: '悬赏的金额不能小于0',
 							icon: 'none',    //如果要纯文本，不要icon，将值设为'none'
 							duration: 2000    //持续时间为 2秒
-						}) 
+						})
 					}
 					else if (this.coin < this.num) {
 						console.log("您的学币不足");
@@ -127,7 +127,7 @@
 							title: '您的学币不足',
 							icon: 'none',    //如果要纯文本，不要icon，将值设为'none'
 							duration: 2000    //持续时间为 2秒
-						}) 
+						})
 					}
 					else{
 						this.reward = parseInt(this.num);
@@ -152,17 +152,17 @@
 								title: '发布成功',
 								icon: 'none',    //如果要纯文本，不要icon，将值设为'none'
 								duration: 2000    //持续时间为 2秒
-							}) 
+							})
 						}).catch(err => {
 							console.log("发布失败")
 							uni.showToast({
 								title: '发布失败',
 								icon: 'none',    //如果要纯文本，不要icon，将值设为'none'
 								duration: 2000    //持续时间为 2秒
-							}) 
+							})
 						})
 					}
-				
+
 				}
 			},
 			async chooseImage1(){
@@ -185,7 +185,7 @@
 				// 		})
 				//     }
 				// });
-				
+
 				// const res = await uni.chooseImage({
 				// 	count: 1,
 				// 	success: (res) => {
@@ -197,9 +197,9 @@
 				// 		})
 				// 	}
 				// });
-				
+
 				// const imagePath = res.tempFilePaths[0];
-				
+
 				// const fileInfo = await uni.getFileInfo({
 				//     filePath: imagePath, // 图片文件路径
 				// 	success: (res) => {
@@ -213,10 +213,10 @@
 				// });
 				// // console.log("kkkkkkkk");
 				// console.log("图片的file文件：" + file);
-				
+
 				try {
 				    // 调用uni.chooseImage方法选择本地图片文件
-				
+
 				    const res = await new Promise((resolve, reject) => {
 				      uni.chooseImage({
 				        count: 1, // 选择图片的数量，这里选择1张
@@ -225,12 +225,12 @@
 				        fail: reject,
 				      });
 				    });
-				
+
 				    // 从返回结果中获取选中的图片文件路径
 				    const imagePath = res.tempFilePaths[0];
-					
-					
-					
+
+
+
 					const res1 = pathToBase64(imagePath)
 					  .then(base64 => {
 						// console.log(base64)
@@ -258,8 +258,8 @@
 					  .catch(error => {
 					    console.error(error)
 					  })
-				
-					
+
+
 					// const uploadRes = await new Promise((resolve, reject) => {
 					//       uni.uploadFile({
 					//         url: 'https://sm.ms/api/v2/upload', // 图床服务器的URL地址
@@ -272,11 +272,11 @@
 					//         fail: reject,
 					//       });
 					//     });
-					
+
 					//     // 上传成功后，可以在uploadRes中获取服务器返回的响应信息
 					//     console.log('上传成功:', uploadRes.data);
-					
-					
+
+
 				//     //调用uni.getFileInfo方法获取图片文件的信息
 				//     const fileInfo = await new Promise((resolve, reject) => {
 				//       uni.getFileInfo({
@@ -288,22 +288,22 @@
 				//         fail: reject,
 				//       });
 				//     });
-					
-				
+
+
 				// 将图片文件转换为File对象
 				    // const file = new File([imagePath], fileInfo.fileName, {
 				    //   type: fileInfo.type, // 设置文件类型
 				    // });
-					
+
 					// var file1 = new File(imagePath);
-				
+
 				    // console.log("图片的file文件：", file);
-				  
-					  
-	
+
+
+
 				// const formData = new FormData();
 				// formData.append('smfile', file);
-						
+
 				// await Axios.post('https://sm.ms/api/v2/upload', formData, {
 				// headers: {
 				//     'Content-Type': 'multipart/form-data',
@@ -314,13 +314,13 @@
 				// }).catch(err => {
 				// 	console.log("图片转换接口请求失败");
 				// });
-				
-				
+
+
 			}catch (error) {
 				console.error('上传失败:', error);
 				}
 			},
-		
+
 			// 将本地图片文件转换为Base64编码的字符串
 		},
 		mounted() {
@@ -331,12 +331,12 @@
 					this.id = res.data;
 					console.log(this.id)
 					uni.$u.http.get('v1/frontend/user/basicUserInfo?id='+this.id, {
-					
+
 					}).then(res => {
 						console.log("获取学币成功！");
 						this.coin = res.data.data.user.Balance;
 						console.log(this.coin);
-					
+
 					}).catch(err => {
 						console.log("获取学币失败！！！");
 					})
@@ -360,7 +360,7 @@
 	padding: 10px;
 }
 #editor {
-	
+
 }
 .downArrow{
 	margin-left: 5rpx;

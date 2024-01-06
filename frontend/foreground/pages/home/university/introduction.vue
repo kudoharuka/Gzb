@@ -1,11 +1,11 @@
 <template>
 	<view>
 		<!-- <view class="mes">
-			<view class="academyMes">
+			<view class="companyMes">
 				<view class="type">院校类型</view>
 				<view class="typeName">{{title.Type}}</view>
 			</view>
-			<view class="academyMes">
+			<view class="companyMes">
 				<view class="type">院校隶属</view>
 				<view class="typeName">{{title.Belong}}</view>
 			</view>
@@ -26,30 +26,30 @@
 		<view>
 			<u-row >
 				<u-col span="1">
-					
+
 				</u-col>
 				<u-col span="5">
-					<view class="academyMes">
+					<view class="companyMes">
 						<view class="type">院校类型</view>
 						<view class="typeName">{{this.type}}</view>
 					</view>
 				</u-col>
 				<u-col span="5">
-					<view class="academyMes">
+					<view class="companyMes">
 						<view class="type">院校隶属</view>
 						<view class="typeName">{{this.belong}}</view>
 					</view>
 				</u-col>
 				<u-col span="1">
-					
+
 				</u-col>
 <!-- 				<view class="mes">
-					<view class="academyMes">
+					<view class="companyMes">
 						<view class="type">院校类型</view>
 						<view class="typeName">{{this.type}}</view>
 					</view> -->
-					
-				
+
+
 
 			</u-row>
 			<view class="introduction">
@@ -104,13 +104,13 @@
 			// 	_this.code = res
 			// 	console.log("内部的code是：");
 			// 	console.log(_this.code)
-			// 	// uni.$u.http.get('/v1/frontend/academy/detail/2010', {
+			// 	// uni.$u.http.get('/v1/frontend/company/detail/2010', {
 
 			// 	// }).then(res => {
 			// 	// 	this.mes = res.data.data;
-			// 	// 	console.log("成功2")		
+			// 	// 	console.log("成功2")
 			// 	// 	console.log(this.mes)
-			// 	// 	console.log("MMMM")	
+			// 	// 	console.log("MMMM")
 			// 	// }).catch(err => {
 			// 	// 	console.log("失败")
 			// 	// })
@@ -134,13 +134,13 @@
 			// 	this.code = on.code
 			// 	console.log("外部的code是");
 			// 	console.log(this.code)
-			// 	uni.$u.http.get('/v1/frontend/academy/detail/' + this.code, {
+			// 	uni.$u.http.get('/v1/frontend/company/detail/' + this.code, {
 
 			// 	}).then(res => {
 			// 		this.mes = res.data.data;
-			// 		console.log("成功2")		
+			// 		console.log("成功2")
 			// 		console.log(this.mes)
-			// 		console.log("MMMM")	
+			// 		console.log("MMMM")
 			// 	}).catch(err => {
 			// 		console.log("失败")
 			// 	})
@@ -151,13 +151,13 @@
 			// console.log("外部的code是");
 			// console.log(this.code)
 
-			// uni.$u.http.get('/v1/frontend/academy/detail/' + this.code, {
+			// uni.$u.http.get('/v1/frontend/company/detail/' + this.code, {
 
 			// }).then(res => {
 			// 	this.mes = res.data.data;
-			// 	console.log("成功2")		
+			// 	console.log("成功2")
 			// 	console.log(this.mes)
-			// 	console.log("MMMM")	
+			// 	console.log("MMMM")
 			// }).catch(err => {
 			// 	console.log("失败")
 			// })
@@ -177,7 +177,7 @@
 		height: 220rpx;
 	}
 
-	.academyMes {
+	.companyMes {
 		/* display: flex; */
 		/* justify-content: center; */
 		width: 250rpx;

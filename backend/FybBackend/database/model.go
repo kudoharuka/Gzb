@@ -32,7 +32,7 @@ type Admin struct {
 	Token       string
 }
 
-type Academy struct {
+type Company struct {
 	ID       int64 `gorm:"column:ID;primaryKey"`
 	Name     string
 	Code     string

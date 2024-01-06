@@ -4,17 +4,17 @@
 			<picker @change="bindPickerChange1" :range="array1" :value="index1" class="selectFormItem">
 				<label class="">{{array1[index1]}}</label>
 				<!-- <label class="downArrow">∨</label> -->
-				<image class="downArrow" src="@/static/academy-icons/down.png"></image>
+				<image class="downArrow" src="@/static/company-icons/down.png"></image>
 			</picker>
 			<picker @change="bindPickerChange2" :range="array2" :value="index2" class="selectFormItem">
 				<label class="">{{array2[index2]}}</label>
 				<!-- <label class="downArrow">∨</label> -->
-				<image class="downArrow" src="@/static/academy-icons/down.png"></image>
+				<image class="downArrow" src="@/static/company-icons/down.png"></image>
 			</picker>
 			<picker @change="bindPickerChange3" :range="array3" :value="index3" class="selectFormItem">
 				<label class="">{{array3[index3]}}</label>
 				<!-- <label class="downArrow">∨</label> -->
-				<image class="downArrow" src="@/static/academy-icons/down.png"></image>
+				<image class="downArrow" src="@/static/company-icons/down.png"></image>
 			</picker>
 		</view>
 		<view>
@@ -126,7 +126,7 @@
 				console.log(_this.code)
 			})
 			console.log("line的下方");
-			uni.$u.http.post('/v1/frontend/academy/score', {
+			uni.$u.http.post('/v1/frontend/company/score', {
 				type: '学科门类',firstLevelDiscipline: '一级学科',secondLevelDiscipline: '二级学科',
 			}).then(res => {
 				console.log("bbbbb")
@@ -162,7 +162,7 @@
 				console.log(this.type);
 				console.log(this.firstLevelDiscipline);
 				console.log(this.secondLevelDiscipline);
-				uni.$u.http.post('/v1/frontend/academy/score', {
+				uni.$u.http.post('/v1/frontend/company/score', {
 					type: this.type,firstLevelDiscipline: this.firstLevelDiscipline,secondLevelDiscipline: this.secondLevelDiscipline,
 				}).then(res => {
 					console.log("bbbbb")
@@ -180,7 +180,7 @@
 				console.log(this.type);
 				console.log(this.firstLevelDiscipline);
 				console.log(this.secondLevelDiscipline);
-				uni.$u.http.post('/v1/frontend/academy/score', {
+				uni.$u.http.post('/v1/frontend/company/score', {
 					type: this.type,firstLevelDiscipline: this.firstLevelDiscipline,secondLevelDiscipline: this.secondLevelDiscipline,
 				}).then(res => {
 					console.log("bbbbb")
@@ -198,7 +198,7 @@
 				console.log(this.type);
 				console.log(this.firstLevelDiscipline);
 				console.log(this.secondLevelDiscipline);
-				uni.$u.http.post('/v1/frontend/academy/score', {
+				uni.$u.http.post('/v1/frontend/company/score', {
 					type: this.type,firstLevelDiscipline: this.firstLevelDiscipline,secondLevelDiscipline: this.secondLevelDiscipline,
 				}).then(res => {
 					console.log("bbbbb")

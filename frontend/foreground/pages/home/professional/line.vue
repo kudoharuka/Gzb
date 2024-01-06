@@ -44,7 +44,7 @@
 			},
 		},
 		created() {
-			uni.$u.http.post('/v1/frontend/academy/score', {
+			uni.$u.http.post('/v1/frontend/company/score', {
 				type: '学科门类',firstLevelDiscipline: '一级学科',secondLevelDiscipline: '二级学科',
 			}).then(res => {
 				this.mes = res.data.data;

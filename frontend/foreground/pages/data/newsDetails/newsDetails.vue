@@ -68,7 +68,7 @@ import { onMounted } from "vue"
         myComment: 'null',
 
         txt: "txt",
-        academyName: '福州大学',
+        companyName: '福州大学',
         indexList: {
           // name: 'zhang',
           // time: '2022-12-21',
@@ -188,7 +188,7 @@ import { onMounted } from "vue"
             this.id = res.data;
             console.log(this.id)
             uni.$u.http.get('/v1/frontend/circle/newinfoDetails/' + this.postId + '/' + this.id, {
-        
+
             }).then(res => {
               console.log(res.data.data);
               this.indexList = res.data.data[0];
@@ -196,20 +196,20 @@ import { onMounted } from "vue"
               this.whetherCollect = this.indexList.isCollected;
               this.likeNum = this.indexList.likeNum;
             }).catch(err => {
-        
+
             })
           }
         })
         uni.$u.http.get('/v1/frontend/circle/newinfoComment/' + this.postId, {
-        
+
           }).then(res => {
             console.log(res.data.data);
             this.comment = res.data.data;
           }).catch(err => {
-        
+
           }),
           uni.$u.http.get('/v1/frontend/circle/newinfoDetails/' + this.postId + '/' + this.id, {
-        
+
           }).then(res => {
             console.log(res.data.data);
             this.indexList = res.data.data[0];
@@ -217,7 +217,7 @@ import { onMounted } from "vue"
             this.whetherCollect = this.indexList.isCollected;
             this.likeNum = this.indexList.likeNum;
           }).catch(err => {
-        
+
           })
       },
       clickSent() {
@@ -305,7 +305,7 @@ onShow(){
 
         })
 
-      // uni.$u.http.post('/v1/frontend/academy/searchByRule', {
+      // uni.$u.http.post('/v1/frontend/company/searchByRule', {
       // 	region: '福建',
       // 	level: '985',
       // 	type: '法学',

@@ -1,4 +1,4 @@
-package academy
+package company
 
 import (
 	fybDatabase "FybBackend/database"
@@ -9,11 +9,11 @@ import (
 
 func SearchByName(e *gin.Engine) {
 	db := fybDatabase.InitDB()
-	e.GET("/v1/frontend/academy/searchByName/:Name", func(context *gin.Context) {
+	e.GET("/v1/frontend/company/searchByName/:Name", func(context *gin.Context) {
 		var result *multierror.Error
 		Name := context.Param("Name")
 
-		err, responseBody, count := fybDatabase.SearchAcademyByName(db, Name)
+		err, responseBody, count := fybDatabase.SearchCompanyByName(db, Name)
 		result = multierror.Append(result, err)
 		if count > 0 && result.ErrorOrNil() == nil {
 			context.JSON(http.StatusOK, gin.H{
