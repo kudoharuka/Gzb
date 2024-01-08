@@ -105,7 +105,7 @@ export default {
         {prop: 'NickName', label: '昵称', width: '150px'},
         {prop: 'PhoneNumber', label: '手机号', width: '150px'},
         {prop: 'Year', label: '年级', width: '100px', sortable: true},
-        {prop: 'College', label: '大学', width: '100px'},
+        {prop: 'Enterprise', label: '大学', width: '100px'},
         {prop: 'Balance', label: '学币', width: '100px', sortable: true},
       ],
       //添加用户的表单数据

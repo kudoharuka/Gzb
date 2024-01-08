@@ -98,7 +98,7 @@
           <el-descriptions-item label="手机号">{{editForm.PhoneNumber}}</el-descriptions-item>
           <el-descriptions-item label="地址">{{editForm.Area}}</el-descriptions-item>
           <el-descriptions-item label="性别">{{editForm.Sex}}</el-descriptions-item>
-          <el-descriptions-item label="目标院校">{{editForm.TargetCollege}}</el-descriptions-item>
+          <el-descriptions-item label="目标院校">{{editForm.TargetEnterprise}}</el-descriptions-item>
           <el-descriptions-item label="目标岗位">{{editForm.TargetJob}}</el-descriptions-item>
           <el-descriptions-item label="岗位">{{editForm.Job}}</el-descriptions-item>
           <el-descriptions-item label="年级"><el-tag size="small">{{editForm.Year}}</el-tag></el-descriptions-item>
@@ -145,7 +145,7 @@ export default {
         {prop: 'NickName', label: '昵称', width: '150px'},
         {prop: 'PhoneNumber', label: '手机号', width: '150px'},
         {prop: 'Year', label: '年级', width: '100px', sortable: true},
-        {prop: 'College', label: '大学', width: '100px'},
+        {prop: 'Enterprise', label: '大学', width: '100px'},
         {prop: 'Balance', label: '学币', width: '100px', sortable: true},
       ],
       //添加用户的表单数据

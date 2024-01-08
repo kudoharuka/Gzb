@@ -9,49 +9,87 @@ import (
 	"time"
 )
 
-// Company
+// Enterprise
 
-func SearchCompanyByRegionLevelType(db *gorm.DB, where map[string]interface{}) (error, []Company, int64) {
+func SearchEnterpriseByRule(db *gorm.DB, where map[string]interface{}) (error, []Enterprise, int64) {
 	var result *multierror.Error
-	var company []Company
+	var enterprise []Enterprise
 	var count int64
-	err := db.Table("company").Where(where).Find(&company).Count(&count).Error
+	err := db.Table("enterprise").Where(where).Find(&enterprise).Count(&count).Error
 	if err != nil {
 		result = multierror.Append(result, err)
 	}
-	return result, company, count
+	return result, enterprise, count
 }
 
-func SearchCompanyByName(db *gorm.DB, name string) (error, []Company, int64) {
-	var company []Company
+func SearchEnterpriseByName(db *gorm.DB, name string) (error, []Enterprise, int64) {
+	var enterprise []Enterprise
 	var result error
-	name = "%" + name + "%"
-	err := db.Table("company").Where("name like ?", name).Find(&company).Error
+	name = name + "%"
+	err := db.Table("enterprise").Where("name like ?", name).Find(&enterprise).Error
 	if err != nil {
 		result = multierror.Append(result, err)
 	}
 	var count int64
-	err2 := db.Table("company").Where("name like ?", name).Find(&company).Count(&count).Error
+	err2 := db.Table("enterprise").Where("name like ?", name).Find(&enterprise).Count(&count).Error
 	if err2 != nil {
 		result = multierror.Append(result, err2)
 	}
-	return result, company, count
+	return result, enterprise, count
 }
 
-func SearchCompanyByCode(db *gorm.DB, code string) (error, []Company, int64) {
-	var company []Company
-	var result error
-	code = code + "%"
-	err := db.Table("company").Where("code like ?", code).Find(&company).Error
-	if err != nil {
-		result = multierror.Append(result, err)
+func DeleteEnterprise(db *gorm.DB, where map[string]interface{}) (int64, error) {
+	var count int64 = 0
+	var enterprise Enterprise
+	err := db.Where(where).Find(&enterprise).Count(&count).Error
+	if count == 0 && err == nil {
+		return 0, errors.New("要删除的记录不存在")
 	}
-	var count int64
-	err2 := db.Table("company").Where("code like ?", code).Find(&company).Count(&count).Error
-	if err2 != nil {
-		result = multierror.Append(result, err2)
+	err = db.Delete(&enterprise).Error
+	return count, err
+}
+
+func UpdateSingleEnterpriseByCondition(db *gorm.DB, where map[string]interface{}, update map[string]interface{}) (int64, error) {
+	var count int64 = 0
+	err := db.Table("enterprise").Where(where).Count(&count).Error
+	if count == 0 && err == nil {
+		return 0, errors.New("要修改的记录不存在")
 	}
-	return result, company, count
+	err = db.Table("enterprise").Where(where).Updates(update).Count(&count).Error
+	return count, err
+}
+
+func AddEnterprise(db *gorm.DB, values map[string]interface{}) (int64, error) {
+	var count int64 = 0
+	err := db.Table("enterprise").Create(values).Count(&count).Error
+	return count, err
+}
+
+func SelectAllEnterpriseByPage(db *gorm.DB, query string, pageNum int64, pageSize int64) ([]Enterprise, int64, error) {
+	var count int64 = 0
+	var enterprises []Enterprise
+	var err error
+	if query != "" {
+		query = query + "%"
+		db = db.Table("enterprise").Where("enterprise.name like ?", query).Order("id").Find(&enterprises).Count(&count)
+	} else {
+		db = db.Table("enterprise").Order("id").Find(&enterprises).Count(&count)
+	}
+	err = db.Limit(int(pageSize)).Offset(int((pageNum - 1) * pageSize)).Find(&enterprises).Error
+	if count == 0 && err == nil {
+		return enterprises, 0, errors.New("要查询的记录不存在")
+	}
+	return enterprises, count, err
+}
+
+func SelectSingleEnterpriseByCondition(db *gorm.DB, where map[string]interface{}) (Enterprise, int64, error) {
+	var count int64 = 0
+	var enterprise Enterprise
+	err := db.Table("enterprise").Where(where).Find(&enterprise).Count(&count).Error
+	if count == 0 {
+		return enterprise, 0, errors.New("查询的记录不存在")
+	}
+	return enterprise, count, err
 }
 
 // Job
@@ -69,53 +107,89 @@ func SelectJobByCondition(db *gorm.DB, where map[string]interface{}) ([]Job, int
 func SearchJobByName(db *gorm.DB, name string) (error, []Job, int64) {
 	var jobs []Job
 	var result error
-	name = "%" + name + "%"
-	err := db.Table("job").Where("name like ?", name).Find(&jobs).Error
+	var count int64
+	name = name + "%"
+	err := db.Table("job").Where("name like ?", name).Find(&jobs).Count(&count).Error
 	if err != nil {
 		result = multierror.Append(result, err)
-	}
-	var count int64
-	err2 := db.Table("job").Where("name like ?", name).Find(&jobs).Count(&count).Error
-	if err2 != nil {
-		result = multierror.Append(result, err2)
 	}
 	return result, jobs, count
 }
 
-func SearchJobByCode(db *gorm.DB, code string) (error, []Job, int64) {
-	var jobs []Job
-	code = code + "%"
+func SearchSingleJobByName(db *gorm.DB, name string) (error, Job, int64) {
+	var job Job
 	var count int64
-	err2 := db.Where("code like ?", code).Find(&jobs).Count(&count).Error
+	err2 := db.Where("name = ?", name).Find(&job).Count(&count).Error
 	if count == 0 && err2 == nil {
-		return nil, jobs, 0
+		return nil, job, 0
 	}
-	return err2, jobs, count
+	return err2, job, count
 }
 
-func SearchScore(db *gorm.DB, code string) (error, Company, int64) {
-	var company Company
-	var result error
-	err := db.Table("company").Where("code=?", code).Find(&company).Error
-	if err != nil {
-		result = multierror.Append(result, err)
+func DeleteJob(db *gorm.DB, where map[string]interface{}) (int64, error) {
+	var count int64 = 0
+	var job Job
+	err := db.Where(where).Find(&job).Count(&count).Error
+	if count == 0 && err == nil {
+		return 0, errors.New("要删除的记录不存在")
 	}
-	var count int64
-	err2 := db.Table("company").Where("code=?", code).Find(&company).Count(&count).Error
-	if err2 != nil {
-		result = multierror.Append(result, err2)
-	}
-	return result, company, count
+	err = db.Delete(&job).Error
+	return count, err
 }
 
-func SearchScoreByTypeFirstSecondLevel(db *gorm.DB, where map[string]interface{}) (error, []string) {
-	var result *multierror.Error
-	var imgUrl []string
-	err := db.Table("job").Where(where).Select("scoreUrl").Find(&imgUrl).Error
-	if err != nil {
-		result = multierror.Append(result, err)
+func UpdateSingleJobByCondition(db *gorm.DB, where map[string]interface{}, update map[string]interface{}) (int64, error) {
+	var count int64 = 0
+	err := db.Table("job").Where(where).Count(&count).Error
+	if count == 0 && err == nil {
+		return 0, errors.New("要修改的记录不存在")
 	}
-	return result, imgUrl
+	err = db.Table("job").Where(where).Updates(update).Count(&count).Error
+	return count, err
+}
+
+func AddJob(db *gorm.DB, values map[string]interface{}) (int64, error) {
+	var count int64 = 0
+	err := db.Table("job").Create(values).Count(&count).Error
+	return count, err
+}
+
+func SelectAllJobByPage(db *gorm.DB, query string, pageNum int64, pageSize int64) ([]Job, int64, error) {
+	var count int64 = 0
+	var jobs []Job
+	var err error
+	if query != "" {
+		query = query + "%"
+		db = db.Table("job").InnerJoins("Enterprise").
+			Where("enterprise.name like ?", query).Order("id").Find(&jobs).Count(&count)
+	} else {
+		db = db.Table("job").InnerJoins("Enterprise").
+			Order("id").Find(&jobs).Count(&count)
+	}
+	err = db.Limit(int(pageSize)).Offset(int((pageNum - 1) * pageSize)).Find(&jobs).Error
+	if count == 0 && err == nil {
+		return jobs, 0, errors.New("要查询的记录不存在")
+	}
+	return jobs, count, err
+}
+func SelectAllJobByCondition(db *gorm.DB, where map[string]interface{}) ([]Job, int64, error) {
+	var count int64 = 0
+	var jobs []Job
+	var err error
+	db = db.Table("job").InnerJoins("Enterprise").Where("enterprise.name like ?", where).Order("id").Find(&jobs).Count(&count)
+	if count == 0 && err == nil {
+		return jobs, 0, errors.New("要查询的记录不存在")
+	}
+	return jobs, count, err
+}
+
+func SelectSingleJobByCondition(db *gorm.DB, where map[string]interface{}) (Job, int64, error) {
+	var count int64 = 0
+	var job Job
+	err := db.Table("job").InnerJoins("Enterprise").Where("job.id = ?", where["id"]).Find(&job).Count(&count).Error
+	if count == 0 {
+		return job, 0, errors.New("查询的记录不存在")
+	}
+	return job, count, err
 }
 
 // Comment
@@ -130,6 +204,7 @@ func DeleteComment(db *gorm.DB, where map[string]interface{}) (int64, error) {
 	err = db.Delete(&comment).Error
 	return count, err
 }
+
 func UpdateSingleCommentByCondition(db *gorm.DB, where map[string]interface{}, update map[string]interface{}) (int64, error) {
 	var count int64 = 0
 	err := db.Table("comment").Where(where).Count(&count).Error
@@ -139,6 +214,7 @@ func UpdateSingleCommentByCondition(db *gorm.DB, where map[string]interface{}, u
 	err = db.Table("comment").Where(where).Updates(update).Count(&count).Error
 	return count, err
 }
+
 func SelectSingleCommentByCondition(db *gorm.DB, where map[string]interface{}) (Comment, int64, error) {
 	var count int64 = 0
 	var comment Comment

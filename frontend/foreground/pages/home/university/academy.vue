@@ -34,25 +34,25 @@
 				<picker @change="bindPickerChange1" :range="array1" :value="index1" class="selectFormItem">
 					<label class="wordSpace">{{array1[index1]}}</label>
 					<label class="down">
-						<image class="downArrow" src="@/static/company-icons/down.png"></image>
+						<image class="downArrow" src="@/static/enterprise-icons/down.png"></image>
 					</label>
 				</picker>
 				<picker @change="bindPickerChange2" :range="array2" :value="index2" class="selectFormItem">
 					<label class="wordSpace">{{array2[index2]}}</label>
 					<!-- <label class="downArrow">∨</label> -->
 					<label class="down">
-						<image class="downArrow" src="@/static/company-icons/down.png"></image>
+						<image class="downArrow" src="@/static/enterprise-icons/down.png"></image>
 					</label>
 				</picker>
 				<picker @change="bindPickerChange3" :range="array3" :value="index3" class="selectFormItem">
 					<label class="wordSpace">{{array3[index3]}}</label>
 					<!-- <label class="downArrow">∨</label> -->
 					<label class="down">
-						<image class="downArrow" src="@/static/company-icons/down.png"></image>
+						<image class="downArrow" src="@/static/enterprise-icons/down.png"></image>
 					</label>
 				</picker>
 			</view>
-			<view class="searchCompany">
+			<view class="searchEnterprise">
 				<text class="searchText" v-if="isExist == true">
 					共搜索到 <text class="searchNum">{{mes.num}}</text> 所院校
 				</text>
@@ -61,11 +61,11 @@
 				</text>
 			</view>
 			<view>
-				<view  class="viewCompany" v-for="m in mes.list" @click="goUniverity(m.Code)" @touchstart="touchStart" @touchend="touchEnd" :style="active">
-					<image class="companyLogo" :src="m.Logo"></image>
+				<view  class="viewEnterprise" v-for="m in mes.list" @click="goUniverity(m.Code)" @touchstart="touchStart" @touchend="touchEnd" :style="active">
+					<image class="enterpriseLogo" :src="m.Logo"></image>
 					<view class="viewText">
-						<text class="companyName">{{m.Name}}</text>
-						<view class="companyType">
+						<text class="enterpriseName">{{m.Name}}</text>
+						<view class="enterpriseType">
 							<view class="typeOfScoreLine">{{m.LineType}}</view>
 							<text class="typeOfInstitution">{{m.Level}}</text>
 						</view>
@@ -110,7 +110,7 @@ import { onLoad } from 'uview-ui/libs/mixin/mixin';
 				region: '院校地区',
 				level: '院校层次',
 				type: '院校类型',
-				companyName: '福州大学',
+				enterpriseName: '福州大学',
 
 				// 初始化定时器为空
 				time:null,
@@ -172,7 +172,7 @@ import { onLoad } from 'uview-ui/libs/mixin/mixin';
 			// });
 
 			// uni.request({
-			// 	// url:'http://124.222.141.238:8088/v1/frontend/company/searchByRule',
+			// 	// url:'http://124.222.141.238:8088/v1/frontend/enterprise/searchByRule',
 			// 	url:'/v1/frontend/user/passwordLogin',
 			// 	method: 'GET',
 			// 	data: {
@@ -206,7 +206,7 @@ import { onLoad } from 'uview-ui/libs/mixin/mixin';
 
 
 
-			// const result = await Axios.post('http://124.222.141.238:8088/v1/frontend/company/searchByRule', {
+			// const result = await Axios.post('http://124.222.141.238:8088/v1/frontend/enterprise/searchByRule', {
 			// 		  region: '福州',
 			// 		  level: '985',
 			// 		  type: '法学',
@@ -223,8 +223,8 @@ import { onLoad } from 'uview-ui/libs/mixin/mixin';
 			// 	let pages = getCurrentPages();
 			// 	let currPage = pages[pages.length - 1];
 			// 	if(currPage.searchContent && currPage.searchContent != '') {
-			// 		this.companyName = currPage.searchContent;
-			// 		uni.$u.http.get('/v1/frontend/company/searchByName/' + this.companyName, {
+			// 		this.enterpriseName = currPage.searchContent;
+			// 		uni.$u.http.get('/v1/frontend/enterprise/searchByName/' + this.enterpriseName, {
 
 			// 		}).then(res => {
 			// 			this.isExist = true;
@@ -244,8 +244,8 @@ import { onLoad } from 'uview-ui/libs/mixin/mixin';
 			// let pages = getCurrentPages();
 			// let currPage = pages[pages.length - 1];
 			// if(currPage.searchContent && currPage.searchContent != '') {
-			// 	this.companyName = currPage.searchContent;
-			// 	uni.$u.http.get('/v1/frontend/company/searchByName/' + this.companyName, {
+			// 	this.enterpriseName = currPage.searchContent;
+			// 	uni.$u.http.get('/v1/frontend/enterprise/searchByName/' + this.enterpriseName, {
 
 			// 	}).then(res => {
 			// 		this.isExist = true;
@@ -264,8 +264,8 @@ import { onLoad } from 'uview-ui/libs/mixin/mixin';
 		// 	uni.$once('searchContent',function(data){
 		// 		console.log("bbbb");
 		// 		console.log(data);
-		// 		this.companyName = data;
-		// 		uni.$u.http.get('/v1/frontend/company/searchByName/' + this.companyName, {
+		// 		this.enterpriseName = data;
+		// 		uni.$u.http.get('/v1/frontend/enterprise/searchByName/' + this.enterpriseName, {
 
 		// 		}).then(res => {
 		// 		  this.mes = res.data.data;
@@ -297,8 +297,8 @@ import { onLoad } from 'uview-ui/libs/mixin/mixin';
 			search() {
 				this.isShow = false;
 				if(this.searchContent != '') {
-					this.companyName = this.searchContent;
-					uni.$u.http.get('/v1/frontend/company/searchByName/' + this.companyName, {
+					this.enterpriseName = this.searchContent;
+					uni.$u.http.get('/v1/frontend/enterprise/searchByName/' + this.enterpriseName, {
 
 					}).then(res => {
 						this.isExist = true;
@@ -318,8 +318,8 @@ import { onLoad } from 'uview-ui/libs/mixin/mixin';
 					let pages = getCurrentPages();
 					let currPage = pages[pages.length - 1];
 					if(currPage.searchContent && currPage.searchContent != '') {
-						this.companyName = currPage.searchContent;
-						uni.$u.http.get('/v1/frontend/company/searchByName/' + this.companyName, {
+						this.enterpriseName = currPage.searchContent;
+						uni.$u.http.get('/v1/frontend/enterprise/searchByName/' + this.enterpriseName, {
 
 						}).then(res => {
 							this.isExist = true;
@@ -346,7 +346,7 @@ import { onLoad } from 'uview-ui/libs/mixin/mixin';
 				console.log(this.region);
 				console.log(this.level);
 				console.log(this.type);
-				uni.$u.http.post('/v1/frontend/company/searchByRule', {
+				uni.$u.http.post('/v1/frontend/enterprise/searchByRule', {
 					region: this.region,level: this.level,type: this.type,
 					// region: '院校地区',level: '院校层次',type: '院校类型',
 				}).then(res => {
@@ -367,7 +367,7 @@ import { onLoad } from 'uview-ui/libs/mixin/mixin';
 				console.log(this.region);
 				console.log(this.level);
 				console.log(this.type);
-				uni.$u.http.post('/v1/frontend/company/searchByRule', {
+				uni.$u.http.post('/v1/frontend/enterprise/searchByRule', {
 					region: this.region,level: this.level,type: this.type,
 					// region: '院校地区',level: '院校层次',type: '院校类型',
 				}).then(res => {
@@ -388,7 +388,7 @@ import { onLoad } from 'uview-ui/libs/mixin/mixin';
 				console.log(this.region);
 				console.log(this.level);
 				console.log(this.type);
-				uni.$u.http.post('/v1/frontend/company/searchByRule', {
+				uni.$u.http.post('/v1/frontend/enterprise/searchByRule', {
 					region: this.region,level: this.level,type: this.type,
 					// region: '院校地区',level: '院校层次',type: '院校类型',
 				}).then(res => {
@@ -404,7 +404,7 @@ import { onLoad } from 'uview-ui/libs/mixin/mixin';
 			},
 			goUniverity(c) {
 				var _this = this
-				uni.$u.http.get('/v1/frontend/company/detail/' + c, {
+				uni.$u.http.get('/v1/frontend/enterprise/detail/' + c, {
 
 				}).then(res => {
 				    console.log(res.data.data);
@@ -455,7 +455,7 @@ import { onLoad } from 'uview-ui/libs/mixin/mixin';
 		},
 		mounted() {
 			// 基本用法，注意：get请求的参数以及配置项都在第二个参数中
-			//      uni.$u.http.get('/v1/frontend/company/searchByName/' + this.companyName, {
+			//      uni.$u.http.get('/v1/frontend/enterprise/searchByName/' + this.enterpriseName, {
 
 			//      }).then(res => {
 			//        console.log(res.data.data);
@@ -464,7 +464,7 @@ import { onLoad } from 'uview-ui/libs/mixin/mixin';
 
 			//      })
 
-			uni.$u.http.post('/v1/frontend/company/searchByRule', {
+			uni.$u.http.post('/v1/frontend/enterprise/searchByRule', {
 				// region: '福州',level: '985',type: '法学',
 				region: '院校地区',level: '院校层次',type: '院校类型',
 			}).then(res => {
@@ -509,7 +509,7 @@ import { onLoad } from 'uview-ui/libs/mixin/mixin';
 	height: 20rpx;
 	width: 20rpx;
 }
-.searchCompany{
+.searchEnterprise{
 	background-color: #efefef55;
 }
 .searchText{
@@ -524,7 +524,7 @@ import { onLoad } from 'uview-ui/libs/mixin/mixin';
 }
 
 
-.viewCompany {
+.viewEnterprise {
 	height: 120rpx;
 	display: flex;
 	flex-direction: row;
@@ -547,7 +547,7 @@ import { onLoad } from 'uview-ui/libs/mixin/mixin';
 	padding: 25rpx;
 
 }
-.companyLogo{
+.enterpriseLogo{
 	height: 120rpx;
 	width: 120rpx;
 }
@@ -556,11 +556,11 @@ import { onLoad } from 'uview-ui/libs/mixin/mixin';
 	display: flex;
 	flex-direction: column;
 }
-.companyName{
+.enterpriseName{
 	font-size: 36rpx;
 	font-family: "黑体";
 }
-.companyType{
+.enterpriseType{
 	display: flex;
 	margin-top: 5rpx;
 }

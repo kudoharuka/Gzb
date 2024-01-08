@@ -3,7 +3,7 @@
 		<view v-for = "m in mes1">
 			<view class="viewSaid" @click="goPost(m.ID)">
 				<view class="viewUser">
-					<image class="headPortrait" src="@/static/company-icons/photo.jpg"></image>
+					<image class="headPortrait" src="@/static/enterprise-icons/photo.jpg"></image>
 					<view class="userMes">
 						<text class="userName">{{m.Author}}</text>
 					</view>
@@ -18,7 +18,7 @@
 
 <!-- 			<view class="viewSaid">
 				<view class="viewUser">
-					<image class="headPortrait" src="@/static/company-icons/photo.jpg"></image>
+					<image class="headPortrait" src="@/static/enterprise-icons/photo.jpg"></image>
 					<view class="userMes">
 						<text class="userName">玲玲学姐</text>
 					</view>
@@ -26,7 +26,7 @@
 				<view class="saidContent">
 
 					<view class="textContent">{{this.content}}</view>
-					<image class="sights" src="@/static/company-icons/sight.png"></image>
+					<image class="sights" src="@/static/enterprise-icons/sight.png"></image>
 
 				</view>
 			</view> -->

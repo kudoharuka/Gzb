@@ -41,7 +41,7 @@
     <u-row class="tabs-box">
       <!-- 院校 -->
       <u-col span="6" style="margin: 0 -40rpx 0 24rpx;height: 256rpx;">
-        <my-card :is-shadow="true" class="tabs-box-item" @click="gotoPage('/pages/home/university/company')" style="height: 600rpx;border-radius: 24rpx;
+        <my-card :is-shadow="true" class="tabs-box-item" @click="gotoPage('/pages/home/university/enterprise')" style="height: 600rpx;border-radius: 24rpx;
 					box-shadow: 5rpx 5rpx 5rpx #646464;border: none;
 					">
           <u-row style="margin: 2rpx 2rpx;">
@@ -49,7 +49,7 @@
               <u--text text="院 校" size="20" color="#ffffff"></u--text>
             </u-col>
             <u-col span="5" offset="1">
-              <u-avatar src="/static/home-images/company.png" shape="square" size="36"></u-avatar>
+              <u-avatar src="/static/home-images/enterprise.png" shape="square" size="36"></u-avatar>
             </u-col>
           </u-row>
           <u-row>
@@ -115,7 +115,7 @@
 					<view class="title" v-else>{{item.title}}</view> -->
             <u--text :lines="1" :text="item.title" bold="" size="36rpx" margin="0 10rpx"></u--text>
             <view class="viewUser">
-              <image class="headPortrait" src="@/static/company-icons/photo.jpg"></image>
+              <image class="headPortrait" src="@/static/enterprise-icons/photo.jpg"></image>
               <view class="userMes">
                 <!-- <text class="userName">{{item.subTitle.substr(0,10)}}</text> -->
                 <u--text :lines="1" :text="item.subTitle" size="26rpx" margin="0 10rpx"></u--text>
@@ -125,7 +125,7 @@
             <view class="saidContent">
               <!-- <view class="textContent">{{item.content.substr(0,30)}}...</view> -->
               <u--text :lines="3" :text="item.content" size="20rpx" margin="0 10rpx"></u--text>
-              <image class="sights" src="@/static/company-icons/sight.png"></image>
+              <image class="sights" src="@/static/enterprise-icons/sight.png"></image>
             </view>
           </view>
         </u-list-item>

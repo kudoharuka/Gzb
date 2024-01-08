@@ -30,7 +30,7 @@ export default {
       columns: [
         {prop: 'Account', label: '姓名', width: '120px'},
         {prop: 'Age', label: '年龄', width: '100px'},
-        {prop: 'College', label: '成绩', width: '100px'}],
+        {prop: 'Enterprise', label: '成绩', width: '100px'}],
     }
   },
   created() {

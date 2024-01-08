@@ -68,7 +68,7 @@ import { onMounted } from "vue"
         myComment: 'null',
 
         txt: "txt",
-        companyName: '福州大学',
+        enterpriseName: '福州大学',
         indexList: {
           // name: 'zhang',
           // time: '2022-12-21',
@@ -305,7 +305,7 @@ onShow(){
 
         })
 
-      // uni.$u.http.post('/v1/frontend/company/searchByRule', {
+      // uni.$u.http.post('/v1/frontend/enterprise/searchByRule', {
       // 	region: '福建',
       // 	level: '985',
       // 	type: '法学',

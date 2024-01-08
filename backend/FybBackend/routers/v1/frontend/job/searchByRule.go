@@ -15,18 +15,18 @@ func SearchByRule(e *gin.Engine, db *gorm.DB) {
 		data, err1 := context.GetRawData()
 		var mp map[string]interface{}
 		err2 := json.Unmarshal(data, &mp)
-		if mp["subjectCategory"] == "学科门类" {
-			delete(mp, "subjectCategory")
+		if mp["region"] == "岗位地点" {
+			delete(mp, "region")
 		}
-		if mp["firstLevelDiscipline"] == "一级学科" {
-			delete(mp, "firstLevelDiscipline")
+		if mp["type"] == "工作性质" {
+			delete(mp, "type")
 		}
-		if mp["mathType"] == "数学类型" {
-			delete(mp, "mathType")
+		if mp["wage"] == "薪资水平" {
+			delete(mp, "wage")
 		}
 
-		if mp["foreignType"] == "外语类型" {
-			delete(mp, "foreignType")
+		if mp["category"] == "工作类型" {
+			delete(mp, "category")
 		}
 		jobs, count, err3 := fybDatabase.SelectJobByCondition(db, mp)
 

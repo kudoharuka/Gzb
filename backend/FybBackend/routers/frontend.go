@@ -2,7 +2,7 @@ package routers
 
 import (
 	"FybBackend/routers/v1/frontend/circle"
-	"FybBackend/routers/v1/frontend/company"
+	"FybBackend/routers/v1/frontend/enterprise"
 	"FybBackend/routers/v1/frontend/job"
 	"FybBackend/routers/v1/frontend/news"
 	"FybBackend/routers/v1/frontend/user/exchange"
@@ -51,12 +51,11 @@ func InitFrontend(r *gin.Engine, db *gorm.DB) {
 	job.SearchByName(r, db)
 	job.SelectByCode(r, db)
 
-	//company
-	company.SearchByName(r)
-	company.SelectCompanyByCode(r)
-	company.SelectScoreByTypeFirstSecondLevel(r)
-	company.SearchByRule(r)
-
+	//enterprise
+	enterprise.SearchJobsByEnterprise(r, db)
+	enterprise.SearchByName(r)
+	enterprise.SelectEnterpriseByName(r)
+	enterprise.SearchByRule(r)
 	//circle
 	circle.SearchByName(r)
 	circle.SearchNewInfoComment(r)

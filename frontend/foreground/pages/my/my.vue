@@ -99,7 +99,7 @@
 					this.user.level = res.data.data.level;
 					this.user.slogan = res.data.data.user.Slogan;
 					this.user.useageDays = res.data.data.userDay;
-					this.user.college = res.data.data.user.College;
+					this.user.college = res.data.data.user.Enterprise;
 					this.user.job = res.data.data.user.Job;
 				}).catch(err => {
 					console.log("请求数据失败！！！");

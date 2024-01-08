@@ -11,7 +11,7 @@
 				<label class="">{{array1[index1]}}</label>
 				<!-- <label class="downArrow"> ∨ </label> -->
 				<label class="down">
-					<image class="downArrow" src="@/static/company-icons/down.png"></image>
+					<image class="downArrow" src="@/static/enterprise-icons/down.png"></image>
 				</label>
 			</picker>
 			<view class="inputNum" v-show="isShow">
@@ -47,7 +47,7 @@
 				index1: 0,
 				type: 0,
 				baseImageList:[],
-				img: '@/static/company-icons/sight.png',
+				img: '@/static/enterprise-icons/sight.png',
 				reward: 0,
 				num: 0,
 				isShow: false,

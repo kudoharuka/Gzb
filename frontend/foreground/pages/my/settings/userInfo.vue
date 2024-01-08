@@ -28,7 +28,7 @@
 					</u-cell>
 
 
-					<picker :range="colleges" @confirm="bindCollegeChange($event)" @change="bindCollegeChange($event)">
+					<picker :range="colleges" @confirm="bindEnterpriseChange($event)" @change="bindEnterpriseChange($event)">
 						<u-cell>
 							<text slot="title">本科院校</text>
 							<text slot="value">{{user.college}}</text>
@@ -49,11 +49,11 @@
 							placeholder="请输入考研年份">{{user.year}}</input>
 					</u-cell>
 
-					<picker :range="colleges" @confirm="bindTargetCollegeChange($event)"
-						@change="bindTargetCollegeChange($event)">
+					<picker :range="colleges" @confirm="bindTargetEnterpriseChange($event)"
+						@change="bindTargetEnterpriseChange($event)">
 						<u-cell>
 							<text slot="title">报考院校</text>
-							<text slot="value">{{user.targetCollege}}</text>
+							<text slot="value">{{user.targetEnterprise}}</text>
 						</u-cell>
 					</picker>
 
@@ -92,7 +92,7 @@
 					college: "",
 					job: "",
 					year: "",
-					targetCollege: "",
+					targetEnterprise: "",
 					slogan: ""
 				},
 
@@ -137,10 +137,10 @@
 					this.user.area = res.data.data.user.Area;
 					this.user.slogan = res.data.data.user.Slogan;
 					this.user.useageDays = res.data.data.userDay;
-					this.user.college = res.data.data.user.College;
+					this.user.college = res.data.data.user.Enterprise;
 					this.user.job = res.data.data.user.Job;
 					this.user.year = res.data.data.user.Year;
-					this.user.targetCollege = res.data.data.user.TargetCollege;
+					this.user.targetEnterprise = res.data.data.user.TargetEnterprise;
 				}).catch(err => {
 					console.log(this.id);
 					console.log("获取数据失败！");
@@ -187,14 +187,14 @@
 			bindSexChange(e) {
 				this.user.sex = this.sex[e.target.value]
 			},
-			bindCollegeChange(e) {
+			bindEnterpriseChange(e) {
 				this.user.college = this.colleges[e.target.value]
 			},
 			bindJobChange(e) {
 				this.user.job = this.jobs[e.target.value]
 			},
-			bindTargetCollegeChange(e) {
-				this.user.targetCollege = this.colleges[e.target.value]
+			bindTargetEnterpriseChange(e) {
+				this.user.targetEnterprise = this.colleges[e.target.value]
 			},
 			//上传用户信息的方法
 			upInfo() {
@@ -207,7 +207,7 @@
 					college: this.user.college,
 					job: this.user.job,
 					year: this.user.year,
-					targetCollege: this.user.targetCollege,
+					targetEnterprise: this.user.targetEnterprise,
 					slogan: this.user.slogan
 				}).then(res => {
 					console.log(res);

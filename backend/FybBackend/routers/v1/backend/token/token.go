@@ -1,7 +1,6 @@
 package token
 
 import (
-	"FybBackend/database"
 	"errors"
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
@@ -17,14 +16,14 @@ type MyClaims struct {
 var (
 	secret         = []byte("31231dasdaseqwkjcozx") //秘钥
 	ExpireDuration = 24 * 7 * time.Hour             //秘钥有效时间
-	issuer         = "Fyb"                          //签发人
+	issuer         = "Gzb"                          //签发人
 )
 
-func GenerateToken(admin database.Admin) (string, error) {
+func GenerateToken(account string, password string) (string, error) {
 	expirationTime := time.Now().Add(ExpireDuration)
 	claims := &MyClaims{
-		Account:     admin.Account,
-		PhoneNumber: admin.PhoneNumber,
+		Account:     account,
+		PhoneNumber: password,
 		StandardClaims: jwt.StandardClaims{
 			ExpiresAt: expirationTime.Unix(),
 			Issuer:    issuer,

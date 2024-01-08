@@ -5,23 +5,23 @@ import (
 )
 
 type User struct {
-	ID            int64 `gorm:"column:ID;primaryKey"`
-	Account       string
-	Password      string
-	PhoneNumber   string `gorm:"column:phoneNumber"`
-	NickName      string `gorm:"column:nickName"`
-	Job           string
-	AvatarUrl     string `gorm:"column:avatarUrl"`
-	Sex           string
-	Area          string
-	Year          int64
-	TargetCollege string `gorm:"column:targetCollege"`
-	TargetJob     string `gorm:"column:targetJob"`
-	Slogan        string
-	Balance       int64
-	College       string
-	State         int64     `gorm:"column:state"`
-	RegisterTime  time.Time `gorm:"column:registerTime"`
+	ID               int64 `gorm:"column:ID;primaryKey"`
+	Account          string
+	Password         string
+	PhoneNumber      string `gorm:"column:phoneNumber"`
+	NickName         string `gorm:"column:nickName"`
+	Job              string
+	AvatarUrl        string `gorm:"column:avatarUrl"`
+	Sex              string
+	Area             string
+	Year             int64
+	TargetEnterprise string `gorm:"column:targetEnterprise"`
+	TargetJob        string `gorm:"column:targetJob"`
+	Slogan           string
+	Balance          int64
+	College          string
+	State            int64     `gorm:"column:state"`
+	RegisterTime     time.Time `gorm:"column:registerTime"`
 }
 
 type Admin struct {
@@ -32,18 +32,22 @@ type Admin struct {
 	Token       string
 }
 
-type Company struct {
-	ID       int64 `gorm:"column:ID;primaryKey"`
-	Name     string
-	Code     string
-	Guide    string
-	Type     string
-	Belong   string
-	Logo     string
-	Level    string
-	LineType string `gorm:"column:lineType"`
-	Profile  string
-	Region   string
+type Enterprise struct {
+	ID           int64 `gorm:"column:ID;primaryKey"`
+	Account      string
+	Password     string
+	Name         string
+	City         string
+	Type         string
+	Belong       string
+	Region       string
+	Logo         string
+	Scale        string
+	Recruitment  string
+	Business     string
+	Founder      string
+	FoundDate    time.Time `gorm:"column:foundDate"`
+	Introduction string
 }
 
 type News struct {
@@ -57,18 +61,20 @@ type News struct {
 }
 
 type Job struct {
-	ID                    int64  `gorm:"primaryKey;comment:岗位id"`
-	Name                  string `gorm:"column:name;comment:岗位名称"`
-	Code                  string `gorm:"column:code;comment:岗位代码"`
-	Profile               string `gorm:"column:profile;comment:岗位简介"`
-	JobDirection          string `gorm:"column:jobDirection;comment:岗位培养方向"`
-	JobProspect           string `gorm:"column:jobProspect;comment:岗位就业前景"`
-	SubjectCategory       string `gorm:"column:subjectCategory;comment:岗位学科门类"`
-	FirstLevelDiscipline  string `gorm:"column:firstLevelDiscipline;comment:岗位一级学科"`
-	SecondLevelDiscipline string `gorm:"column:secondLevelDiscipline;comment:岗位二级学课"`
-	ScoreUrl              string `gorm:"column:scoreUrl;comment:考研分数线url"`
-	ForeignType           string `gorm:"column:foreignType"`
-	MathType              string `gorm:"column:mathType"`
+	ID           int64      `gorm:"primaryKey"`
+	Name         string     `gorm:"column:name"`
+	Education    string     `gorm:"column:education"`
+	Wage         string     `gorm:"column:wage"`
+	City         string     `gorm:"column:city"`
+	Type         string     `gorm:"column:type"`
+	Tag          string     `gorm:"column:Tag"`
+	Category     string     `gorm:"column:category"`
+	Benefit      string     `gorm:"column:benefit"`
+	Requirement  string     `gorm:"column:requirement"`
+	Message      string     `gorm:"column:message"`
+	Introduction string     `gorm:"column:introduction"`
+	Deadline     string     `gorm:"column:deadline"`
+	Enterprise   Enterprise `gorm:"foreignKey:ID"`
 }
 
 type Part struct {

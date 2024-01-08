@@ -65,7 +65,7 @@
         myanswer: 'null',
         isMine: '',
         txt: "txt",
-        companyName: '福州大学',
+        enterpriseName: '福州大学',
         indexList: {},
         answer: [],
 

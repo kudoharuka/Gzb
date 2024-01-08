@@ -92,7 +92,7 @@
             "buttons": [{
               "float": "right",
               "fontSize": "32rpx",
-              // "fontSrc": "/static/company-icons/iconfont.ttf",
+              // "fontSrc": "/static/enterprise-icons/iconfont.ttf",
               "text": "搜索"
             }]
           }
@@ -133,7 +133,7 @@
         "backgroundColor": "#E7ECFF"
       }
     }, {
-      "path": "pages/home/university/company",
+      "path": "pages/home/university/enterprise",
       "style": {
         "navigationBarTitleText": "院校",
         "enablePullDownRefresh": false,
@@ -142,7 +142,7 @@
             "buttons": [{
               "float": "right",
               "fontSize": "32rpx",
-              // "fontSrc": "/static/company-icons/iconfont.ttf",
+              // "fontSrc": "/static/enterprise-icons/iconfont.ttf",
               "text": "搜索"
             }]
           }

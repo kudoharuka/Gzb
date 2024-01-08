@@ -1,11 +1,11 @@
 <template>
 	<view>
 		<!-- <view class="mes">
-			<view class="companyMes">
+			<view class="enterpriseMes">
 				<view class="type">院校类型</view>
 				<view class="typeName">{{title.Type}}</view>
 			</view>
-			<view class="companyMes">
+			<view class="enterpriseMes">
 				<view class="type">院校隶属</view>
 				<view class="typeName">{{title.Belong}}</view>
 			</view>
@@ -29,13 +29,13 @@
 
 				</u-col>
 				<u-col span="5">
-					<view class="companyMes">
+					<view class="enterpriseMes">
 						<view class="type">院校类型</view>
 						<view class="typeName">{{this.type}}</view>
 					</view>
 				</u-col>
 				<u-col span="5">
-					<view class="companyMes">
+					<view class="enterpriseMes">
 						<view class="type">院校隶属</view>
 						<view class="typeName">{{this.belong}}</view>
 					</view>
@@ -44,7 +44,7 @@
 
 				</u-col>
 <!-- 				<view class="mes">
-					<view class="companyMes">
+					<view class="enterpriseMes">
 						<view class="type">院校类型</view>
 						<view class="typeName">{{this.type}}</view>
 					</view> -->
@@ -104,7 +104,7 @@
 			// 	_this.code = res
 			// 	console.log("内部的code是：");
 			// 	console.log(_this.code)
-			// 	// uni.$u.http.get('/v1/frontend/company/detail/2010', {
+			// 	// uni.$u.http.get('/v1/frontend/enterprise/detail/2010', {
 
 			// 	// }).then(res => {
 			// 	// 	this.mes = res.data.data;
@@ -134,7 +134,7 @@
 			// 	this.code = on.code
 			// 	console.log("外部的code是");
 			// 	console.log(this.code)
-			// 	uni.$u.http.get('/v1/frontend/company/detail/' + this.code, {
+			// 	uni.$u.http.get('/v1/frontend/enterprise/detail/' + this.code, {
 
 			// 	}).then(res => {
 			// 		this.mes = res.data.data;
@@ -151,7 +151,7 @@
 			// console.log("外部的code是");
 			// console.log(this.code)
 
-			// uni.$u.http.get('/v1/frontend/company/detail/' + this.code, {
+			// uni.$u.http.get('/v1/frontend/enterprise/detail/' + this.code, {
 
 			// }).then(res => {
 			// 	this.mes = res.data.data;
@@ -177,7 +177,7 @@
 		height: 220rpx;
 	}
 
-	.companyMes {
+	.enterpriseMes {
 		/* display: flex; */
 		/* justify-content: center; */
 		width: 250rpx;

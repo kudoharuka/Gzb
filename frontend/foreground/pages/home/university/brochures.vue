@@ -55,7 +55,7 @@
 			console.log("下方");
 			// uni.$on('code',res=>{
 			// 	this.code = res
-			// 	uni.$u.http.get('/v1/frontend/company/detail/' + this.code, {
+			// 	uni.$u.http.get('/v1/frontend/enterprise/detail/' + this.code, {
 
 			// 	}).then(res => {
 			// 		this.mes = res.data.data;

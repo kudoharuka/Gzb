@@ -9,7 +9,7 @@
 				</view>
 			</view>
 		</view>
-		<view class="companyBar">
+		<view class="enterpriseBar">
 			<view class="barItem" @click="show(1)" :class="index===1? 'active':''">岗位介绍</view>
 			<view class="barItem" @click="show(2)" :class="index===2? 'active':''">分数线</view>
 			<view class="barItem" @click="show(3)" :class="index===3? 'active':''">就业前景</view>
@@ -120,7 +120,7 @@
 		display: flex;
 		flex-direction: column;
 	}
-	.companyLogo{
+	.enterpriseLogo{
 		margin-right: 40rpx;
 		height: 150rpx;
 		width: 150rpx;
@@ -146,7 +146,7 @@
 		font-size: 30rpx;
 	}
 
-	.companyBar{
+	.enterpriseBar{
 			display: flex;
 			justify-content: center;
 		}
