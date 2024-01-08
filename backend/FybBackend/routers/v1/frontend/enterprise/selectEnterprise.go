@@ -26,7 +26,7 @@ func SelectEnterpriseByName(e *gin.Engine) {
 				"code":    200,
 				"message": "用户查看企业成功",
 				"data": map[string]interface{}{
-					"desc":        enterprise.Introduction,
+					"desc":        enterprise.Desc,
 					"recruitment": enterprise.Recruitment,
 					"name":        enterprise.Name,
 					"type":        enterprise.Type,

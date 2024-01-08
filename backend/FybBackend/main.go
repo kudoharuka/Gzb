@@ -35,7 +35,6 @@ func Cors() gin.HandlerFunc {
 				fmt.Printf("Panic info is: %v", err)
 			}
 		}()
-
 		c.Next()
 	}
 }

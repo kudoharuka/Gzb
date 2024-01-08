@@ -33,21 +33,21 @@ type Admin struct {
 }
 
 type Enterprise struct {
-	ID           int64 `gorm:"column:ID;primaryKey"`
-	Account      string
-	Password     string
-	Name         string
-	City         string
-	Type         string
-	Belong       string
-	Region       string
-	Logo         string
-	Scale        string
-	Recruitment  string
-	Business     string
-	Founder      string
-	FoundDate    time.Time `gorm:"column:foundDate"`
-	Introduction string
+	ID          int64 `gorm:"column:ID;primaryKey"`
+	Account     string
+	Password    string
+	Name        string
+	City        string
+	Type        string
+	Belong      string
+	Region      string
+	Logo        string
+	Scale       string
+	Recruitment string
+	Business    string
+	Founder     string
+	FoundDate   time.Time `gorm:"column:foundDate"`
+	Desc        string
 }
 
 type News struct {
