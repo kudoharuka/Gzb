@@ -17,6 +17,9 @@ func SearchJobsByEnterprise(e *gin.Engine, db *gorm.DB) {
 		err2 := json.Unmarshal(data, &mp)
 		if mp["region"] == "岗位地点" {
 			delete(mp, "region")
+		} else {
+			mp["job.region"] = mp["region"]
+			delete(mp, "region")
 		}
 		if mp["type"] == "工作性质" {
 			delete(mp, "type")
@@ -33,8 +36,6 @@ func SearchJobsByEnterprise(e *gin.Engine, db *gorm.DB) {
 		enterprise, _, _ := fybDatabase.SelectSingleEnterpriseByCondition(db, where)
 		delete(mp, "name")
 		mp["enterpriseID"] = enterprise.ID
-		mp["job.region"] = mp["region"]
-		delete(mp, "region")
 		jobs, count, err3 := fybDatabase.SelectJobByCondition(db, mp)
 
 		result = multierror.Append(result, err1, err2, err3)
