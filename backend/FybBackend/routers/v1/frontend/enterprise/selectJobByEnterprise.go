@@ -15,19 +15,19 @@ func SearchJobsByEnterprise(e *gin.Engine, db *gorm.DB) {
 		data, err1 := context.GetRawData()
 		var mp map[string]interface{}
 		err2 := json.Unmarshal(data, &mp)
-		if mp["region"] == "岗位地点" {
-			delete(mp, "region")
-		} else {
-			mp["job.region"] = mp["region"]
-			delete(mp, "region")
+		mp["job.region"] = mp["region"]
+		mp["job.type"] = mp["type"]
+		delete(mp, "region")
+		delete(mp, "type")
+		if mp["job.region"] == "岗位地点" {
+			delete(mp, "job.region")
 		}
-		if mp["type"] == "工作性质" {
-			delete(mp, "type")
+		if mp["job.type"] == "工作性质" {
+			delete(mp, "job.type")
 		}
 		if mp["wage"] == "薪资水平" {
 			delete(mp, "wage")
 		}
-
 		if mp["category"] == "工作类型" {
 			delete(mp, "category")
 		}
