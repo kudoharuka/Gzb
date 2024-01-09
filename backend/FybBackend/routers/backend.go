@@ -48,6 +48,7 @@ func InitBackend(r *gin.Engine, db *gorm.DB) {
 
 	//enterprise
 	enterpriseLogin.Login(r, db)
+	modifyEnterprise.RegisterEnterprise(r, db)
 	modifyEnterprise.DeleteEnterprise(r, db)
 	modifyEnterprise.AddEnterprise(r, db)
 	modifyEnterprise.UpdateEnterprise(r, db)
