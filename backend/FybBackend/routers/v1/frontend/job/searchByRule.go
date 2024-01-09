@@ -19,11 +19,11 @@ func SearchByRule(e *gin.Engine, db *gorm.DB) {
 		mp["job.type"] = mp["type"]
 		delete(mp, "region")
 		delete(mp, "type")
-		if mp["region"] == "岗位地点" {
-			delete(mp, "region")
+		if mp["job.region"] == "岗位地点" {
+			delete(mp, "job.region")
 		}
-		if mp["type"] == "工作性质" {
-			delete(mp, "type")
+		if mp["job.type"] == "工作性质" {
+			delete(mp, "job.type")
 		}
 		if mp["wage"] == "薪资水平" {
 			delete(mp, "wage")
