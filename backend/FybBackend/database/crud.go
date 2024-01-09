@@ -229,7 +229,6 @@ func SelectAllCommentByPage(db *gorm.DB, query string, pageNum int64, pageSize i
 	var count int64 = 0
 	var comments []Comment
 	if query != "" {
-		query = query + "%"
 		db = db.Table("comment").InnerJoins("Author").
 			Where("comment.targetPost = ?", query).Order("state asc, id").Find(&comments).Count(&count)
 	} else {
