@@ -61,7 +61,12 @@ func UpdateSingleEnterpriseByCondition(db *gorm.DB, where map[string]interface{}
 
 func AddEnterprise(db *gorm.DB, values map[string]interface{}) (int64, error) {
 	var count int64 = 0
-	err := db.Table("enterprise").Create(values).Count(&count).Error
+	err := db.Table("enterprise").Where("account = ?", values["account"]).Count(&count).Error
+	fmt.Println(values)
+	if count > 0 {
+		return 0, errors.New("用户已存在")
+	}
+	err = db.Table("enterprise").Create(values).Count(&count).Error
 	return count, err
 }
 
