@@ -39,7 +39,6 @@ type Enterprise struct {
 	Name        string
 	City        string
 	Type        string
-	Belong      string
 	Region      string
 	Logo        string
 	Scale       string

@@ -805,15 +805,6 @@ func SelectAllFeedbackByPage(db *gorm.DB, query string, pageNum int64, pageSize 
 	}
 	return feedbacks, count, err
 }
-func SelectAllPossByUser(db *gorm.DB, userID string) ([]Post, int64, error) {
-	var count int64 = 0
-	var posts []Post
-	err := db.Where("authorID = ?", userID).Find(&posts).Error
-	if count == 0 && err == nil {
-		return posts, 0, errors.New("查询的记录不存在")
-	}
-	return posts, count, nil
-}
 
 func UpdateSingleFeedbackByCondition(db *gorm.DB, where map[string]interface{}, update map[string]interface{}) (int64, error) {
 	var count int64 = 0

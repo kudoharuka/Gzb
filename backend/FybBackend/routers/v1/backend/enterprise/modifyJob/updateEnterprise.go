@@ -24,8 +24,8 @@ func UpdateEnterprise(e *gin.Engine, db *gorm.DB) {
 		mp2 := make(map[string]interface{})
 		b, err1 := context.GetRawData()
 		err2 := json.Unmarshal(b, &mp1)
-		mp2["id"] = mp1["id"]
-		delete(mp1, "id")
+		mp2["account"] = mp1["account"]
+		delete(mp1, "account")
 		_, err3 := fybDatabase.UpdateSingleEnterpriseByCondition(db, mp2, mp1)
 		result = multierror.Append(result, err1, err2, err3)
 
