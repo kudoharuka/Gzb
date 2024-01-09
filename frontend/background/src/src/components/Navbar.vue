@@ -6,7 +6,7 @@
                :router="true">
         <div class="logo">
           <img src="../assets/logo.png" style="width: 40px;padding:10px">
-          <span style="font-weight: bold;">福研帮管理系统</span>
+          <span style="font-weight: bold;">工作帮管理系统</span>
         </div>
         <el-menu-item index="home"><i class="el-icon-s-home"/> <span class="el-menu-text">首页</span></el-menu-item>
         <el-menu-item index="user"><i class="el-icon-user"/> <span class="el-menu-text">用户管理</span></el-menu-item>

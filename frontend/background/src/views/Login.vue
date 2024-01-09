@@ -1,7 +1,7 @@
 <template>
   <div class="login">
     <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form">
-      <h3 class="title">福研帮管理系统</h3>
+      <h3 class="title">工作帮管理系统</h3>
       <el-form-item prop="account">
         <el-input
             v-model="loginForm.account"
@@ -43,7 +43,7 @@
     </el-form>
     <!--  底部  -->
     <div class="el-login-footer">
-      <span>Copyright © 2023-2023 福研帮 版权所有.</span>
+      <span>Copyright © 2023-2023 工作帮 版权所有.</span>
     </div>
   </div>
 </template>

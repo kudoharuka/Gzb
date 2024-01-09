@@ -51,7 +51,7 @@ func Exchange(e *gin.Engine) {
 
 func sendEmail(to, subject, body string) error {
 	e := email.NewEmail()
-	e.From = "福研帮_Official <dhzemail@foxmail.com>"
+	e.From = "工作帮_Official <dhzemail@foxmail.com>"
 	e.To = []string{to}
 	e.Subject = subject
 	e.Text = []byte(body)

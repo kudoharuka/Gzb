@@ -19901,7 +19901,7 @@ var render = function () {
                       _c(
                         "v-uni-text",
                         { attrs: { slot: "value", _i: 14 }, slot: "value" },
-                        [_vm._v("福研帮已经陪伴了您")]
+                        [_vm._v("工作帮已经陪伴了您")]
                       ),
                       _c(
                         "v-uni-text",
@@ -22647,7 +22647,7 @@ var render = function () {
           _c(
             "v-uni-text",
             { staticClass: _vm._$g(10, "sc"), attrs: { _i: 10 } },
-            [_vm._v("学币是仅限于在福研帮中使用的虚拟货币")]
+            [_vm._v("学币是仅限于在工作帮中使用的虚拟货币")]
           ),
           _c(
             "v-uni-text",
@@ -22657,12 +22657,12 @@ var render = function () {
           _c(
             "v-uni-text",
             { staticClass: _vm._$g(12, "sc"), attrs: { _i: 12 } },
-            [_vm._v("1.学币是仅限于在福研帮中使用的虚拟货币")]
+            [_vm._v("1.学币是仅限于在工作帮中使用的虚拟货币")]
           ),
           _c(
             "v-uni-text",
             { staticClass: _vm._$g(13, "sc"), attrs: { _i: 13 } },
-            [_vm._v("2.学币是仅限于在福研帮中使用的虚拟货币")]
+            [_vm._v("2.学币是仅限于在工作帮中使用的虚拟货币")]
           ),
         ],
         1
@@ -27210,7 +27210,7 @@ var render = function () {
                       staticClass: _vm._$g(21, "sc"),
                       attrs: { decode: "true", _i: 21 },
                     },
-                    [_vm._v("福研帮")]
+                    [_vm._v("工作帮")]
                   ),
                   _c(
                     "v-uni-text",

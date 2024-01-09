@@ -15,7 +15,7 @@
               <ul class="list-group list-group-striped">
                 <li class="list-group-item">
                   <i class="el-icon-user"></i>用户名
-                  <div class="pull-right">福研帮后台管理员</div>
+                  <div class="pull-right">工作帮后台管理员</div>
                 </li>
                 <li class="list-group-item">
                   <i class="el-icon-edit-outline"></i>密码

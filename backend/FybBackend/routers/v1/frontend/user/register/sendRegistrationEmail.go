@@ -8,7 +8,7 @@ import (
 
 func SendRegistrationEmail(account, subject string, content string) error {
 	e := email.NewEmail()
-	e.From = "福研帮_Official <dhzemail@foxmail.com>"
+	e.From = "工作帮_Official <dhzemail@foxmail.com>"
 	e.To = []string{account}
 	e.Subject = subject
 	e.Text = []byte(content)

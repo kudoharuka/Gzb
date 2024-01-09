@@ -21,7 +21,7 @@
 					<u-cell>
 						<text slot="title">{{user.college}}</text>
 						<text slot="title">{{user.job}}</text>
-						<text slot="value">福研帮已经陪伴了您</text>
+						<text slot="value">工作帮已经陪伴了您</text>
 						<text slot="value" class="days">{{user.useageDays}}</text>
 						<text slot="value">天了</text>
 					</u-cell>

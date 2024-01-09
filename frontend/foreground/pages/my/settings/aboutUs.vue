@@ -45,7 +45,7 @@
 				<view class="about_62">
 					<image src="/static/my-assets//about//Logo.jpg" mode="scaleToFill" border="0" class="about_22">
 					</image>
-					<text decode="true" class="about_35">福研帮</text>
+					<text decode="true" class="about_35">工作帮</text>
 					<text decode="true" class="about_36">{{version}}</text>
 				</view>
 			</view>

@@ -16,10 +16,10 @@
 		<hr class='divider' />
 		<view class="box2">
 			<text class="title">什么是学币</text>
-			<text class="ans">学币是仅限于在福研帮中使用的虚拟货币</text>
+			<text class="ans">学币是仅限于在工作帮中使用的虚拟货币</text>
 			<text class="title" id="t1">如何使用学币</text>
-			<text class="ans">1.学币是仅限于在福研帮中使用的虚拟货币</text>
-			<text class="ans">2.学币是仅限于在福研帮中使用的虚拟货币</text>
+			<text class="ans">1.学币是仅限于在工作帮中使用的虚拟货币</text>
+			<text class="ans">2.学币是仅限于在工作帮中使用的虚拟货币</text>
 		</view>
 		<view>
 			<u-popup :show="show1" @close="close2" @open="open1">
@@ -275,7 +275,7 @@
 		width: 200rpx;
 		height: 80rpx;
 		color: #ffffff;
-		
+
 		background-image: linear-gradient(112deg, #08507880, #85d8ce);
 		border-radius: 20px;
 		border: none;
@@ -286,9 +286,9 @@
 		width: 250rpx;
 		height: 80rpx;
 		color: #ffffff;
-		
+
 		margin-bottom: 30rpx;
-		
+
 		background-image: linear-gradient(112deg, #08507880, #85d8ce);
 		border-radius: 20px;
 		border: none;
@@ -350,7 +350,7 @@
 		width: 40%;
 		border-radius: 50px;
 		background-color: #f4ce69; */
-		
+
 		width: 40%;
 
 		background-image: linear-gradient(112deg, #08507880, #85d8ce);

@@ -63,7 +63,7 @@ func SendEmail(e *gin.Engine) {
 			return
 		}
 
-		err = SendRegistrationEmail(account, "【福研帮验证码】感谢注册使用福研帮！", generateEmailContent(account, vCode))
+		err = SendRegistrationEmail(account, "【工作帮验证码】感谢注册使用工作帮！", generateEmailContent(account, vCode))
 		if err != nil {
 			context.JSON(500, gin.H{
 				"code":    500,
