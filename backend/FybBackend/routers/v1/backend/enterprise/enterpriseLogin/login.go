@@ -33,10 +33,10 @@ func Login(e *gin.Engine, db *gorm.DB) {
 		code, msg := exceptionHandler.Handle(result)
 		if code == 200 {
 			context.JSON(code, gin.H{
-				"code":    code,
-				"message": "登录成功",
-				"account": enterprise.Account,
-				"token":   tokenStr,
+				"code":       code,
+				"message":    "登录成功",
+				"enterprise": enterprise,
+				"token":      tokenStr,
 			})
 		} else {
 			context.JSON(code, gin.H{

@@ -35,7 +35,7 @@ func Login(e *gin.Engine, db *gorm.DB) {
 			context.JSON(code, gin.H{
 				"code":    code,
 				"message": "登录成功",
-				"account": admin.Account,
+				"admin":   admin,
 				"token":   tokenStr,
 			})
 		} else {
