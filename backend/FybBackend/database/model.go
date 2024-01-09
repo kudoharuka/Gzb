@@ -47,6 +47,8 @@ type Enterprise struct {
 	Founder     string
 	FoundDate   time.Time `gorm:"column:foundDate"`
 	Desc        string
+	PhoneNumber string `gorm:"column:phoneNumber"`
+	Token       string
 }
 
 type News struct {
@@ -86,8 +88,8 @@ type Post struct {
 	Summary     string    `gorm:"column:summary"`
 	Content     string    `gorm:"column:content"`
 	State       int64     `gorm:"column:state"`
-	Author      User      `gorm:"foreignKey:AuthorID;"`
-	Part        Part      `gorm:"foreignKey:PartID"`
+	Author      User      `gorm:"foreignKey:ID;"`
+	Part        Part      `gorm:"foreignKey:ID"`
 	PartID      int64     `gorm:"column:partID"`
 	AuthorID    int64     `gorm:"column:authorID"`
 	Favorite    int64     `gorm:"column:favorite"`
@@ -106,7 +108,7 @@ type Comment struct {
 	TargetPost  int64     `gorm:"column:targetPost"`
 	PublishTime time.Time `gorm:"column:publishTime"`
 	State       int64     `gorm:"column:state"`
-	Author      User      `gorm:"foreignKey:UserID"`
+	Author      User      `gorm:"foreignKey:ID"`
 }
 
 type Feedback struct {
@@ -115,23 +117,23 @@ type Feedback struct {
 	Content string    `gorm:"column:content"`
 	State   int64     `gorm:"column:state"`
 	Time    time.Time `gorm:"column:time"`
-	Author  User      `gorm:"foreignKey:UserID"`
+	Author  User      `gorm:"foreignKey:ID"`
 }
 
 type FavoriteRecord struct {
 	ID        int64  `gorm:"column:ID;primaryKey"`
 	UserID    string `gorm:"column:userID"`
 	ArticleID string `gorm:"column:articleID"`
-	Article   Post   `gorm:"foreignKey:articleID"`
-	Author    User   `gorm:"foreignKey:UserID"`
+	Article   Post   `gorm:"foreignKey:ID"`
+	Author    User   `gorm:"foreignKey:ID"`
 }
 
 type LikeRecord struct {
 	ID     int64  `gorm:"column:ID;primaryKey"`
 	UserId string `gorm:"column:userId"`
 	PostId string `gorm:"column:postId"`
-	Post   Post   `gorm:"foreignKey:postId"`
-	Author User   `gorm:"foreignKey:UserId"`
+	Post   Post   `gorm:"foreignKey:Id"`
+	Author User   `gorm:"foreignKey:Id"`
 }
 
 type AdoptRecord struct {

@@ -24,7 +24,6 @@ func SelectPostByAccount(e *gin.Engine, db *gorm.DB) {
 		mp["id"] = context.DefaultQuery("id", "")
 		post, _, err1 := fybDatabase.SelectSinglePostByCondition(db, mp)
 		result = multierror.Append(result, err1)
-
 		code, msg := exceptionHandler.Handle(result)
 		if code == 200 {
 			context.JSON(code, gin.H{

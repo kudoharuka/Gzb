@@ -485,10 +485,10 @@ func SelectSinglePostByCondition(db *gorm.DB, where map[string]interface{}) (Pos
 	var count int64 = 0
 	var post Post
 	err := db.Table("post").InnerJoins("Author").InnerJoins("Part").Where("post.id = ?", where["id"]).Find(&post).Count(&count).Error
-	if count == 0 {
-		return post, 0, errors.New("查询的记录不存在")
+	if count != 0 {
+		return post, count, err
 	}
-	return post, count, err
+	return post, 0, errors.New("查询的记录不存在")
 }
 
 func SelectSingleQueByCondition(db *gorm.DB, where map[string]interface{}) (Post, int64, error) {
