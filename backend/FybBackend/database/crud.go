@@ -97,7 +97,7 @@ func SelectSingleEnterpriseByCondition(db *gorm.DB, where map[string]interface{}
 func SelectJobByCondition(db *gorm.DB, where map[string]interface{}) ([]Job, int64, error) {
 	var jobs []Job
 	var count int64 = 0
-	err := db.Table("job").Where(where).Find(&jobs).Count(&count).Error
+	err := db.Table("job").InnerJoins("Enterprise").Where(where).Find(&jobs).Count(&count).Error
 	if count == 0 && err == nil {
 		return jobs, count, nil
 	}
