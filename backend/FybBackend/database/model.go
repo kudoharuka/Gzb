@@ -21,6 +21,7 @@ type User struct {
 	Balance          int64
 	College          string
 	State            int64     `gorm:"column:state"`
+	Email            int64     `gorm:"column:email"`
 	RegisterTime     time.Time `gorm:"column:registerTime"`
 }
 
