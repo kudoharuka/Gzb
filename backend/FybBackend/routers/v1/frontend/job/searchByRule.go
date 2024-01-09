@@ -15,6 +15,10 @@ func SearchByRule(e *gin.Engine, db *gorm.DB) {
 		data, err1 := context.GetRawData()
 		var mp map[string]interface{}
 		err2 := json.Unmarshal(data, &mp)
+		mp["job.region"] = mp["region"]
+		mp["job.type"] = mp["type"]
+		delete(mp, "region")
+		delete(mp, "type")
 		if mp["region"] == "岗位地点" {
 			delete(mp, "region")
 		}
