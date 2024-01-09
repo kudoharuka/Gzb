@@ -10,6 +10,7 @@ import (
 type MyClaims struct {
 	Account            string
 	PhoneNumber        string
+	Role               string
 	jwt.StandardClaims // 标准Claims结构体，可设置8个标准字段
 }
 
@@ -19,11 +20,12 @@ var (
 	issuer         = "Gzb"                          //签发人
 )
 
-func GenerateToken(account string, password string) (string, error) {
+func GenerateToken(account string, password string, role string) (string, error) {
 	expirationTime := time.Now().Add(ExpireDuration)
 	claims := &MyClaims{
 		Account:     account,
 		PhoneNumber: password,
+		Role:        role,
 		StandardClaims: jwt.StandardClaims{
 			ExpiresAt: expirationTime.Unix(),
 			Issuer:    issuer,

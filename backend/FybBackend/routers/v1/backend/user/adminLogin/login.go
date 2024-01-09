@@ -22,7 +22,7 @@ func Login(e *gin.Engine, db *gorm.DB) {
 		var err3, err4 error
 		admin, count1, err1 := fybDatabase.SelectSingleAdminByCondition(db, mp1)
 		if count1 != 0 {
-			tokenStr, err3 = token.GenerateToken(admin.Account, admin.Password)
+			tokenStr, err3 = token.GenerateToken(admin.Account, admin.Password, "admin")
 			mp2["token"] = tokenStr
 			_, err4 = fybDatabase.UpdateSingleAdminByCondition(db, mp1, mp2)
 		}

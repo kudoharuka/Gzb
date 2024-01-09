@@ -22,7 +22,7 @@ func Login(e *gin.Engine, db *gorm.DB) {
 		var err3, err4 error
 		enterprise, count1, err1 := fybDatabase.SelectSingleEnterpriseByCondition(db, mp1)
 		if count1 != 0 {
-			tokenStr, err3 = token.GenerateToken(enterprise.Account, enterprise.Password)
+			tokenStr, err3 = token.GenerateToken(enterprise.Account, enterprise.Password, "enterprise")
 			mp2["token"] = tokenStr
 			_, err4 = fybDatabase.UpdateSingleEnterpriseByCondition(db, mp1, mp2)
 		}
