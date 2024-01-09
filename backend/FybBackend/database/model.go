@@ -67,6 +67,7 @@ type Job struct {
 	Education    string     `gorm:"column:education"`
 	Wage         string     `gorm:"column:wage"`
 	City         string     `gorm:"column:city"`
+	Region       string     `gorm:"column:region"`
 	Type         string     `gorm:"column:type"`
 	Tag          string     `gorm:"column:Tag"`
 	Category     string     `gorm:"column:category"`
