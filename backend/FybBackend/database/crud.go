@@ -524,7 +524,7 @@ func SelectAllPostByPage(db *gorm.DB, query string, pageNum int64, pageSize int6
 		db = db.Table("post").InnerJoins("Author").InnerJoins("Part").
 			Where("account like ?", query).Order("state asc, id").Find(&posts).Count(&count)
 	} else {
-		db = db.Table("post").InnerJoins("Author").InnerJoins("Part").
+		db = db.Table("post").Joins("Author").Joins("Part").
 			Order("state asc, id").Find(&posts).Count(&count)
 	}
 	err = db.Limit(int(pageSize)).Offset(int((pageNum - 1) * pageSize)).Find(&posts).Error

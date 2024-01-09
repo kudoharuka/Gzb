@@ -70,12 +70,13 @@ type Job struct {
 	Type         string     `gorm:"column:type"`
 	Tag          string     `gorm:"column:Tag"`
 	Category     string     `gorm:"column:category"`
+	EnterpriseID string     `gorm:"column:category"`
 	Benefit      string     `gorm:"column:benefit"`
 	Requirement  string     `gorm:"column:requirement"`
 	Message      string     `gorm:"column:message"`
 	Introduction string     `gorm:"column:introduction"`
 	Deadline     string     `gorm:"column:deadline"`
-	Enterprise   Enterprise `gorm:"foreignKey:ID"`
+	Enterprise   Enterprise `gorm:"foreignKey:enterpriseID"`
 }
 
 type Part struct {
@@ -88,8 +89,8 @@ type Post struct {
 	Summary     string    `gorm:"column:summary"`
 	Content     string    `gorm:"column:content"`
 	State       int64     `gorm:"column:state"`
-	Author      User      `gorm:"foreignKey:ID;"`
-	Part        Part      `gorm:"foreignKey:ID"`
+	Author      User      `gorm:"foreignKey:authorID"`
+	Part        Part      `gorm:"foreignKey:partID"`
 	PartID      int64     `gorm:"column:partID"`
 	AuthorID    int64     `gorm:"column:authorID"`
 	Favorite    int64     `gorm:"column:favorite"`
@@ -108,7 +109,7 @@ type Comment struct {
 	TargetPost  int64     `gorm:"column:targetPost"`
 	PublishTime time.Time `gorm:"column:publishTime"`
 	State       int64     `gorm:"column:state"`
-	Author      User      `gorm:"foreignKey:ID"`
+	Author      User      `gorm:"foreignKey:userID"`
 }
 
 type Feedback struct {
@@ -117,23 +118,23 @@ type Feedback struct {
 	Content string    `gorm:"column:content"`
 	State   int64     `gorm:"column:state"`
 	Time    time.Time `gorm:"column:time"`
-	Author  User      `gorm:"foreignKey:ID"`
+	Author  User      `gorm:"foreignKey:userID"`
 }
 
 type FavoriteRecord struct {
 	ID        int64  `gorm:"column:ID;primaryKey"`
 	UserID    string `gorm:"column:userID"`
 	ArticleID string `gorm:"column:articleID"`
-	Article   Post   `gorm:"foreignKey:ID"`
-	Author    User   `gorm:"foreignKey:ID"`
+	Article   Post   `gorm:"foreignKey:userID"`
+	Author    User   `gorm:"foreignKey:articleID"`
 }
 
 type LikeRecord struct {
 	ID     int64  `gorm:"column:ID;primaryKey"`
 	UserId string `gorm:"column:userId"`
 	PostId string `gorm:"column:postId"`
-	Post   Post   `gorm:"foreignKey:Id"`
-	Author User   `gorm:"foreignKey:Id"`
+	Post   Post   `gorm:"foreignKey:userId"`
+	Author User   `gorm:"foreignKey:postId"`
 }
 
 type AdoptRecord struct {
