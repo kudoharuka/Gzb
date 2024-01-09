@@ -71,7 +71,7 @@ type Job struct {
 	Type         string     `gorm:"column:type"`
 	Tag          string     `gorm:"column:Tag"`
 	Category     string     `gorm:"column:category"`
-	EnterpriseID string     `gorm:"column:category"`
+	EnterpriseID string     `gorm:"column:enterpriseID"`
 	Benefit      string     `gorm:"column:benefit"`
 	Requirement  string     `gorm:"column:requirement"`
 	Message      string     `gorm:"column:message"`
