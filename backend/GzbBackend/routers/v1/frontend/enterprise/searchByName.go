@@ -1,0 +1,38 @@
+package enterprise
+
+import (
+	fybDatabase "FybBackend/database"
+	"github.com/gin-gonic/gin"
+	"github.com/hashicorp/go-multierror"
+	"net/http"
+)
+
+func SearchByName(e *gin.Engine) {
+	db := fybDatabase.InitDB()
+	e.GET("/v1/frontend/enterprise/searchByName/:Name", func(context *gin.Context) {
+		var result *multierror.Error
+		Name := context.Param("Name")
+
+		err, responseBody, count := fybDatabase.SearchEnterpriseByName(db, Name)
+		result = multierror.Append(result, err)
+		if count > 0 && result.ErrorOrNil() == nil {
+			context.JSON(http.StatusOK, gin.H{
+				"code":    200,
+				"message": "企业搜索成功",
+				"data": map[string]interface{}{
+					"num":  count,
+					"list": responseBody,
+				},
+			})
+		} else {
+			context.JSON(http.StatusNotFound, gin.H{
+				"code":    404,
+				"message": result.Error(),
+				"data": map[string]interface{}{
+					"num":  count,
+					"list": responseBody,
+				},
+			})
+		}
+	})
+}

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="FybBackend">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/backend/FybBackend.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
