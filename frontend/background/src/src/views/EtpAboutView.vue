@@ -1,7 +1,7 @@
 <template>
-  <div class="app-container">
+  <div class="app-container" style="margin-top: 20px">
     <el-row :gutter="20">
-      <el-col :span="16" :xs="24" :offset="4">
+      <el-col :span="24" :xs="24">
         <el-card>
           <div slot="header" class="clearfix">
             <span>关于我们</span>
@@ -11,10 +11,18 @@
               <el-image :src="require('../assets/images/GZB.png')" style="width: 290px;"
                         fit="fill"></el-image>
             </div>
-            <el-row style="line-height: 42px;">应用简介：由来自福州大学20级软件工程专业的学生制作</el-row>
-            <el-row style="line-height: 42px;">主要功能：提供各企业各岗位工作资讯</el-row>
-            <el-row style="line-height: 42px;">开发目的：方便用户寻找心仪的工作岗位的求职APP</el-row>
-            <el-row style="line-height: 42px;">涉及方向：Vue、uniapp、Go、Gin</el-row>
+            <el-row style="line-height: 42px;" align="middle">
+              <el-col :span="16" offset="8">应用简介：由来自福州大学20级软件工程专业的学生制作</el-col>
+            </el-row>
+            <el-row style="line-height: 42px;" align="middle">
+              <el-col :span="16" offset="8">主要功能：提供各企业各岗位工作资讯</el-col>
+            </el-row>
+            <el-row style="line-height: 42px;" align="middle">
+              <el-col :span="16" offset="8">开发目的：方便用户寻找心仪的工作岗位的求职APP</el-col>
+            </el-row>
+            <el-row style="line-height: 42px;" align="middle">
+              <el-col :span="16" offset="8">涉及方向：Vue、uniapp、Go、Gin</el-col>
+            </el-row>
           </div>
         </el-card>
       </el-col>

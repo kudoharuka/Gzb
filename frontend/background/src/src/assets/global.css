@@ -5,9 +5,6 @@ html,body,#app {
     height: 100%;
     font-family: "PingFang SC";
 }
-.round15{
-    border-radius: 15px;
-}
 .mg{
     margin: 10px;
 }
@@ -24,4 +21,7 @@ html,body,#app {
 }
 .mg_b20{
     margin-bottom: 20px;
+}
+.ql-editor{
+    min-height: 300px;
 }
