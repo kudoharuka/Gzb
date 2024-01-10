@@ -165,10 +165,10 @@ func SelectAllJobByPage(db *gorm.DB, query string, pageNum int64, pageSize int64
 	if query != "" {
 		query = query + "%"
 		db = db.Table("job").InnerJoins("Enterprise").
-			Where("enterprise.name like ?", query).Order("id").Find(&jobs).Count(&count)
+			Where("enterprise.id = ?", query).Order("job.id").Find(&jobs).Count(&count)
 	} else {
 		db = db.Table("job").InnerJoins("Enterprise").
-			Order("id").Find(&jobs).Count(&count)
+			Order("job.id").Find(&jobs).Count(&count)
 	}
 	err = db.Limit(int(pageSize)).Offset(int((pageNum - 1) * pageSize)).Find(&jobs).Error
 	if count == 0 && err == nil {
