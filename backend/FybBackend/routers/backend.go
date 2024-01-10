@@ -15,7 +15,7 @@ import (
 	"FybBackend/routers/v1/backend/news/selectNews"
 	"FybBackend/routers/v1/backend/post/modifyPost"
 	"FybBackend/routers/v1/backend/post/selectPost"
-	"FybBackend/routers/v1/backend/user/adminLogin"
+	"FybBackend/routers/v1/backend/user/admin"
 	"FybBackend/routers/v1/backend/user/modifyUser"
 	"FybBackend/routers/v1/backend/user/selectUser"
 	"github.com/gin-gonic/gin"
@@ -24,7 +24,9 @@ import (
 
 func InitBackend(r *gin.Engine, db *gorm.DB) {
 	//user
-	adminLogin.Login(r, db)
+	admin.Login(r, db)
+	admin.GetCode(r)
+	admin.RsetPwd(r, db)
 	modifyUser.AddUser(r, db)
 	modifyUser.UpdateUser(r, db)
 	modifyUser.DeleteUser(r, db)
@@ -76,4 +78,5 @@ func InitBackend(r *gin.Engine, db *gorm.DB) {
 	//dashboard
 	dashboard.GetPostData(r, db)
 	dashboard.GetHomeData(r, db)
+
 }

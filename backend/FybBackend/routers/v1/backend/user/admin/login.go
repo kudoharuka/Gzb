@@ -1,4 +1,4 @@
-package adminLogin
+package admin
 
 import (
 	fybDatabase "FybBackend/database"
