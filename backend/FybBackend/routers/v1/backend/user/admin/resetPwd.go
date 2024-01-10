@@ -76,14 +76,15 @@ func RsetPwd(e *gin.Engine, db *gorm.DB) {
 				// 处理邮件发送失败的错误
 				context.JSON(500, gin.H{
 					"code":    500,
-					"message": "密码重置",
+					"message": "密码重置失败",
 					"error":   err1.Error(),
 				})
+			} else {
+				context.JSON(200, gin.H{
+					"code":    200,
+					"message": "密码重置成功",
+				})
 			}
-			context.JSON(200, gin.H{
-				"code":    200,
-				"message": "验证成功",
-			})
 
 		} else {
 			errMsg := ""
